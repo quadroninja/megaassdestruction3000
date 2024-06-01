@@ -10,6 +10,7 @@ public class PlayerMovement : MonoBehaviour
     public Rigidbody2D rb;
     private Vector2 moveDirection;
     public HealthBar healthBar;
+
     void Start()
     {
         currentHealth = maxHealth;
