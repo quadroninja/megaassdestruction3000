@@ -7,6 +7,8 @@ public class HealthChanger : MonoBehaviour
     public int maxHealth = 100;
     public int currentHealth;
     public HealthBar healthBar;
+    private float timeCheck;
+    public float invisibilityTime;
 
     void Start()
     {
@@ -23,9 +25,14 @@ public class HealthChanger : MonoBehaviour
         }
     }
 
-    void TakeDamage(int damage)
+    public void TakeDamage(int damage)
     {
-        currentHealth -= damage;
-        healthBar.ChangeHealth(currentHealth);
+        if (timeCheck <= 0)
+        {
+            currentHealth -= damage;
+            healthBar.ChangeHealth(currentHealth);
+            timeCheck = invisibilityTime;
+        }
+        else timeCheck -= Time.deltaTime;
     }
 }

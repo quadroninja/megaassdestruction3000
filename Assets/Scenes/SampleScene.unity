@@ -896,9 +896,10 @@ GameObject:
   - component: {fileID: 1109295934}
   - component: {fileID: 1109295933}
   - component: {fileID: 1109295932}
-  m_Layer: 0
+  - component: {fileID: 1109295936}
+  m_Layer: 3
   m_Name: Enemy
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -959,7 +960,7 @@ CircleCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: -0.0037226677, y: -0.012555599}
@@ -1032,6 +1033,22 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1109295936
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1109295931}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 48f4bf9c4a75a044c8eb5016967f6a2c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 100
+  damage: 20
+  player: {fileID: 1290037012}
+  movespeed: 0.05
 --- !u!1 &1138437257
 GameObject:
   m_ObjectHideFlags: 0
@@ -1152,7 +1169,7 @@ GameObject:
   - component: {fileID: 1290037017}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1298,7 +1315,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: -0.13399124, y: 0.08534658}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -1309,7 +1326,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 9.2, y: 6}
+  m_Size: {x: 10.003952, y: 6.853465}
   m_EdgeRadius: 0
 --- !u!114 &1290037016
 MonoBehaviour:
@@ -1342,6 +1359,7 @@ MonoBehaviour:
   maxHealth: 100
   currentHealth: 100
   healthBar: {fileID: 1753494762}
+  invisibilityTime: 1
 --- !u!1 &1726397610
 GameObject:
   m_ObjectHideFlags: 0
@@ -1667,6 +1685,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 5
+  lifetime: 0
+  distance: 0
+  damage: 0
+  whatIsSolid:
+    serializedVersion: 2
+    m_Bits: 0
 --- !u!1001 &2137432453518771864
 PrefabInstance:
   m_ObjectHideFlags: 0
