@@ -5,7 +5,7 @@ using UnityEngine;
 public class EnemySpawner : MonoBehaviour
 {
     // Настройки спавна 
-    public GameObject enemy; // Префаб врага 
+    public List<GameObject> enemy; // Префаб врага 
     public int enemyCount = 10; // Количество врагов в волне 
     public float minSpawnRadius = 5f; // Минимальный радиус спавна от игрока 
     public float maxSpawnRadius = 10f; // Максимальный радиус спавна от игрока 
@@ -27,6 +27,7 @@ public class EnemySpawner : MonoBehaviour
     {
         for (int i = 0; i < enemyCount; i++)
         {
+            int type = Random.Range(0, enemy.Count);
             // Генерация случайного радиуса и угла 
             float radius = Random.Range(minSpawnRadius, maxSpawnRadius);
             float angle = Random.Range(0f, 360f);
@@ -38,7 +39,7 @@ public class EnemySpawner : MonoBehaviour
             );
 
             // Создание врага 
-            Instantiate(enemy, spawnPosition, Quaternion.identity);
+            Instantiate(enemy[type], spawnPosition, Quaternion.identity);
         }
     }
 }
