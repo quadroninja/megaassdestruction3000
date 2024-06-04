@@ -9,7 +9,8 @@ public class EnemySpawner : MonoBehaviour
     public int enemyCount = 10; // Количество врагов в волне 
     public float minSpawnRadius = 5f; // Минимальный радиус спавна от игрока 
     public float maxSpawnRadius = 10f; // Максимальный радиус спавна от игрока 
-    public float spawnDelay = 5f; // Время между волнами 
+    public float spawnDelay = 5; // Время между волнами 
+    public float timeRemaining;
 
     private GameObject player; // Игрок 
 
@@ -18,10 +19,23 @@ public class EnemySpawner : MonoBehaviour
         // Найти игрока по тэгу 
         player = GameObject.FindGameObjectWithTag("Player");
 
+        timeRemaining = spawnDelay;
         // Запустить первый спавн 
         InvokeRepeating("SpawnEnemies", 0f, spawnDelay);
     }
 
+    void FixedUpdate()
+    {
+        if (timeRemaining > 0)
+        {
+            timeRemaining -= Time.deltaTime;
+        }
+        if (timeRemaining<0)
+        {
+            SpawnEnemies();
+            timeRemaining = spawnDelay;
+        }
+    }
     // Функция спавна врагов 
     private void SpawnEnemies()
     {
