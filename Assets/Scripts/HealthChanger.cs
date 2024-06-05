@@ -34,5 +34,9 @@ public class HealthChanger : MonoBehaviour
             timeCheck = invisibilityTime;
         }
         else timeCheck -= Time.deltaTime;
+        if (currentHealth <= 0)
+        {
+            Destroy(gameObject);
+        }
     }
 }
