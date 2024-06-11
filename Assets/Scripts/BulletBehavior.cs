@@ -8,6 +8,7 @@ public class BulletBehavior : MonoBehaviour
     public float lifetime;
     public float distance;
     public int damage;
+    public float atkSpeed;
     public LayerMask whatIsSolid;
 
     // Update is called once per frame

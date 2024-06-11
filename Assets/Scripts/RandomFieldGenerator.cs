@@ -8,7 +8,7 @@ public class FieldGenerator : MonoBehaviour
     public GameObject bonusPrefab;
     // Тайлмап
     public Tilemap tilemap;
-
+    public Tile field;
     // Персонаж
     public Transform player;
 
@@ -39,9 +39,9 @@ public class FieldGenerator : MonoBehaviour
                     // Выбираем случайный тип клетки
                     int randomIndex = Random.Range(0, cellPrefabs.Length);
                     GameObject cell = Instantiate(cellPrefabs[randomIndex], new Vector3(x, y, 0), Quaternion.identity);
-
+                    field.
                     // Добавляем клетку на тайлмап
-                    tilemap.SetTile(new Vector3Int(x, y, 0), cell.GetComponent<Tile>());
+                    tilemap.SetTile(new Vector3Int(x, y, 0), cell);
 
                     // Генерация бонуса с заданной вероятностью
                     if (Random.value < bonusChance)
