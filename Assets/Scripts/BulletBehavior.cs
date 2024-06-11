@@ -15,13 +15,21 @@ public class BulletBehavior : MonoBehaviour
     void Update()
     {
         RaycastHit2D hitInfo = Physics2D.Raycast(transform.position, transform.up, distance, whatIsSolid);
+        if (lifetime<0)
+        {
+            Destroy(gameObject);
+        }
+        else lifetime -= Time.deltaTime;
         if (hitInfo.collider != null)
         {
             if (hitInfo.collider.CompareTag("Enemy"))
             {
                 hitInfo.collider.GetComponent<Enemy>().TakeDamage(damage);
             }
-            Destroy(gameObject);
+            if (gameObject.tag == "Destroyable")
+            {
+                Destroy(gameObject);
+            }
         }
         transform.Translate(Vector2.up*speed*Time.deltaTime);
     }

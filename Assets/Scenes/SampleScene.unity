@@ -208,7 +208,6 @@ GameObject:
   - component: {fileID: 349339036}
   - component: {fileID: 349339038}
   - component: {fileID: 349339037}
-  - component: {fileID: 349339039}
   m_Layer: 0
   m_Name: Tilemap
   m_TagString: Untagged
@@ -318,23 +317,6 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
---- !u!114 &349339039
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 349339035}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 45b1758bbcb6c8c49b23c65bdba4dfa4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cellPrefabs:
-  - {fileID: 1488232151545272833, guid: 723dd7f6088a05948bdf72e6b5570398, type: 3}
-  bonusPrefab: {fileID: 1488232151545272833, guid: 723dd7f6088a05948bdf72e6b5570398, type: 3}
-  tilemap: {fileID: 349339038}
-  player: {fileID: 1290037012}
 --- !u!1 &425773541
 GameObject:
   m_ObjectHideFlags: 0
@@ -1458,7 +1440,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weapons:
   - {fileID: 3557162656710350807, guid: c459ae7d26313e8419dd45e9df629a7c, type: 3}
-  - {fileID: 6658248698423468219, guid: ff1952d50d041ca419000309c4f00e26, type: 3}
+  - {fileID: 2428893236397216664, guid: a7e1f9913ab9f1742a9f145134ebf040, type: 3}
   shoot: {fileID: 1290037016}
 --- !u!1 &1452861151 stripped
 GameObject:
