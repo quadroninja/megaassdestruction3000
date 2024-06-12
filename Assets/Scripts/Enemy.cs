@@ -6,8 +6,9 @@ public class Enemy : MonoBehaviour
 {
     public int health;
     public int damage;
-
-    public Transform player;
+    private float timeCheck;
+    public float invisibilityTime;
+    Transform player;
     public float movespeed;
 
     private void Update()
@@ -36,6 +37,11 @@ public class Enemy : MonoBehaviour
 
     public void TakeDamage(int damage)
     {
-        health -= damage;
+        if (timeCheck <= 0)
+        {
+            health -= damage;
+            timeCheck = invisibilityTime;
+        }
+        else timeCheck -= Time.deltaTime;
     }
 }

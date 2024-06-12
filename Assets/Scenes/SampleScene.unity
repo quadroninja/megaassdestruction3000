@@ -1412,6 +1412,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+<<<<<<< Updated upstream
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
@@ -1494,6 +1495,18 @@ CanvasRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
+=======
+  weapons:
+  - {fileID: 3557162656710350807, guid: c459ae7d26313e8419dd45e9df629a7c, type: 3}
+  - {fileID: 2428893236397216664, guid: a7e1f9913ab9f1742a9f145134ebf040, type: 3}
+  - {fileID: 2353149233913043135, guid: f928076306e3a7941a75f7418fd2e427, type: 3}
+  stats: {fileID: 0}
+  shoot: {fileID: 1290037016}
+--- !u!1 &1452861151 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3350320472523338590, guid: 96de1d83526e1c64d850abf2c9fac613, type: 3}
+  m_PrefabInstance: {fileID: 438618584}
+>>>>>>> Stashed changes
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1409811398}
   m_CullTransparentMesh: 1
@@ -1869,6 +1882,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1290037012}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+<<<<<<< Updated upstream
 --- !u!1 &2109495982 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3557162656710350807, guid: c459ae7d26313e8419dd45e9df629a7c, type: 3}
@@ -2034,6 +2048,8 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 96de1d83526e1c64d850abf2c9fac613, type: 3}
+=======
+>>>>>>> Stashed changes
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
@@ -2043,6 +2059,12 @@ SceneRoots:
   - {fileID: 519420032}
   - {fileID: 1290037012}
   - {fileID: 649798101}
+<<<<<<< Updated upstream
   - {fileID: 1109295935}
   - {fileID: 6161154018613768510}
   - {fileID: 2137432453518771864}
+=======
+  - {fileID: 1720246920}
+  - {fileID: 1019485128}
+  - {fileID: 438618584}
+>>>>>>> Stashed changes
