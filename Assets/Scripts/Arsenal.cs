@@ -13,8 +13,11 @@ public class Arsenal : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space))
         {
             shoot.bullet = weapons[wIndex];
-            //shoot.atkSpeed = weapons[wIndex].BulletBehavior.atkSpeed;
-            wIndex++;
+            if (wIndex + 1 < weapons.Length)
+            {
+                wIndex++;
+            }
+            else wIndex = 0;
         }
     }
 }

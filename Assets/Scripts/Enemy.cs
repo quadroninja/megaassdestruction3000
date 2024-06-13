@@ -6,11 +6,10 @@ public class Enemy : MonoBehaviour
 {
     public int health;
     public int damage;
-
     public Transform player;
     public float movespeed;
 
-    private void Update()
+    public void Update()
     {
         RaycastHit2D hitInfo = Physics2D.Raycast(transform.position, transform.up);
         if (hitInfo.collider.CompareTag("Player"))
