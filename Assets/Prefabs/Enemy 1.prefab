@@ -165,7 +165,7 @@ MonoBehaviour:
   health: 50
   damage: 0
   player: {fileID: 0}
-  movespeed: 0
+  movespeed: 0.03
   hookShot: {fileID: -1272170921326239876}
 --- !u!114 &-1272170921326239876
 MonoBehaviour:
@@ -180,6 +180,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cooldownTime: 10
-  pullRadius: 100
-  pullForce: 10
+  pullRadius: 10
+  pullForce: 9
   pullDuration: 1
