@@ -12,10 +12,10 @@ GameObject:
   - component: {fileID: 2251892758775187171}
   - component: {fileID: 6870908408307197641}
   - component: {fileID: 3178644656565206471}
-  - component: {fileID: -6034658179118369430}
-  - component: {fileID: -1272170921326239876}
+  - component: {fileID: 8729899016398772799}
+  - component: {fileID: 977772608433059404}
   m_Layer: 3
-  m_Name: Enemy 1
+  m_Name: Enemy 2
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -78,7 +78,7 @@ SpriteRenderer:
   m_SortingLayer: 1
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 1462b1c8b75ad0444a8fb644f7c44bec, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.12941177, g: 0.227451, b: 0.32941177, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -150,7 +150,7 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!114 &-6034658179118369430
+--- !u!114 &8729899016398772799
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -159,15 +159,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 6658248698423468219}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ca4aca91153f33b4c8f87ffc7ffeefbe, type: 3}
+  m_Script: {fileID: 11500000, guid: 8c0b9e70012af8f44980c85176f1a632, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 50
-  damage: 100
+  health: 5
+  damage: 5
   player: {fileID: 0}
-  movespeed: 0.03
-  hookShot: {fileID: -1272170921326239876}
---- !u!114 &-1272170921326239876
+  movespeed: 0.01
+  swap: {fileID: 977772608433059404}
+--- !u!114 &977772608433059404
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -176,9 +176,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 6658248698423468219}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 701f4b34bcdc01a478c25c436f79be7d, type: 3}
+  m_Script: {fileID: 11500000, guid: 9e0367b59f40a3a469bd432ccf9b9cbd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cooldownTime: 1
-  pullRadius: 5
-  pullForce: 1000
+  cooldownTime: 5
+  swapRadius: 100

@@ -10,13 +10,8 @@ public class HookShot : MonoBehaviour
     public float pullRadius = 5f;
     public float pullForce = 10f;
     private float buffer = 0;
-    // Время действия силы притяжения
-    public float pullDuration = 1f;
-
     // Время до следующей активации
     private float nextActivationTime;
-    // Время окончания действия силы притяжения
-    private float pullEndTime;
 
     public void ActivateAbility()
     {
@@ -26,16 +21,7 @@ public class HookShot : MonoBehaviour
         {
             buffer = playerMovement.moveSpeed;
             playerMovement.moveSpeed = 0;
-            // Запускаем притяжение
-            pullEndTime = Time.time + pullDuration;
-
-            // Применяем силу притяжения с интервалом
-            while (pullEndTime >= 0)
-            {
-                ApplyPullForce();
-                pullEndTime -= Time.deltaTime;
-            }
-            pullEndTime = pullDuration;
+            ApplyPullForce();
             playerMovement.moveSpeed = buffer;
         }
     }
@@ -43,11 +29,10 @@ public class HookShot : MonoBehaviour
     {
         playerMovement.moveSpeed = buffer;
     }
-        // Метод для применения силы притяжения с интервалом
     private void ApplyPullForce()
     {
         GameObject player = GameObject.FindGameObjectWithTag("Player");
-        if (Vector2.Distance(transform.position, player.transform.position) <= pullRadius && Time.time < pullEndTime)
+        if (Vector2.Distance(transform.position, player.transform.position) <= pullRadius)
         {
             Vector2 direction = (transform.position - player.transform.position).normalized;
             player.GetComponent<Rigidbody2D>().AddForce(direction * pullForce);
