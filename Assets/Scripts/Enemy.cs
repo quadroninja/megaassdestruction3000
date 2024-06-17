@@ -6,12 +6,10 @@ public class Enemy : MonoBehaviour
 {
     public int health;
     public int damage;
-    private float timeCheck;
-    public float invisibilityTime;
-    Transform player;
+    public Transform player;
     public float movespeed;
 
-    private void Update()
+    public void Update()
     {
         RaycastHit2D hitInfo = Physics2D.Raycast(transform.position, transform.up);
         if (hitInfo.collider.CompareTag("Player"))
@@ -37,11 +35,6 @@ public class Enemy : MonoBehaviour
 
     public void TakeDamage(int damage)
     {
-        if (timeCheck <= 0)
-        {
-            health -= damage;
-            timeCheck = invisibilityTime;
-        }
-        else timeCheck -= Time.deltaTime;
+        health -= damage;
     }
 }

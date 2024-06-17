@@ -4,13 +4,26 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
+    private float baseMoveSpeed;
     public float moveSpeed;
     public Rigidbody2D rb;
+    private float timeCheck;
+    public float maxStunTime;
     private Vector2 moveDirection;
 
     // Update is called once per frame
     void Update()
     {
+        if (moveSpeed != 0)
+        {
+            baseMoveSpeed = moveSpeed;
+        }
+        else timeCheck -= Time.deltaTime;
+        if (timeCheck < 0)
+        {
+            moveSpeed = baseMoveSpeed;
+            timeCheck = maxStunTime;
+        }
         ProcessInputs();
     }
 

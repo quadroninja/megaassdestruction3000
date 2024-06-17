@@ -174,8 +174,8 @@ MonoBehaviour:
   speed: 0
   lifetime: 10
   distance: 20
-  damage: 100
-  atkSpeed: 0
+  damage: 20
+  tickTime: 1
   whatIsSolid:
     serializedVersion: 2
     m_Bits: 8
