@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BulletBehavior : MonoBehaviour
+public class EnemyBulletBehavior : MonoBehaviour
 {
     public float speed;
     public float lifetime;
@@ -14,9 +14,9 @@ public class BulletBehavior : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.gameObject.CompareTag("Enemy") && timeCheck < 0)
+        if (other.gameObject.CompareTag("Player") && timeCheck < 0)
         {
-            other.gameObject.GetComponent<Enemy>().TakeDamage(damage);
+            other.gameObject.GetComponent<HealthChanger>().TakeDamage(damage);
             timeCheck = tickTime;
         }
     }

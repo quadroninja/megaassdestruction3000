@@ -6,16 +6,25 @@ public class Enemy : MonoBehaviour
 {
     public int health;
     public int damage;
-    public Transform player;
+    private Transform player;
     public float movespeed;
 
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.gameObject.CompareTag("Player"))
+        {
+            other.gameObject.GetComponent<HealthChanger>().TakeDamage(damage);
+        }
+    }
     public void Update()
     {
-        RaycastHit2D hitInfo = Physics2D.Raycast(transform.position, transform.up);
+        
+        /*RaycastHit2D hitInfo = Physics2D.Raycast(transform.position, transform.up);
         if (hitInfo.collider.CompareTag("Player"))
         {
             hitInfo.collider.GetComponent<HealthChanger>().TakeDamage(damage);
-        }
+        }*/
         if (health <= 0)
         {
             Destroy(gameObject);

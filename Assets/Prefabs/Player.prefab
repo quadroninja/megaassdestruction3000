@@ -240,7 +240,7 @@ MonoBehaviour:
   maxHealth: 100
   currentHealth: 100
   healthBar: {fileID: 0}
-  invisibilityTime: 1
+  invisibilityTime: 0.1
 --- !u!114 &4582527600436818264
 MonoBehaviour:
   m_ObjectHideFlags: 0

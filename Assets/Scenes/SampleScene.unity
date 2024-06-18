@@ -1694,7 +1694,7 @@ GameObject:
   - component: {fileID: 1290037016}
   - component: {fileID: 1290037017}
   - component: {fileID: 1290037018}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -1887,7 +1887,7 @@ MonoBehaviour:
   maxHealth: 100
   currentHealth: 100
   healthBar: {fileID: 1753494762}
-  invisibilityTime: 1
+  invisibilityTime: 0
 --- !u!114 &1290037018
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2037,7 +2037,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyPrefabs:
-  - {fileID: 6658248698423468219, guid: ff1952d50d041ca419000309c4f00e26, type: 3}
+  - {fileID: 6658248698423468219, guid: 69e486b95a705494c8e9e97d3bdd9f86, type: 3}
   - {fileID: 6658248698423468219, guid: 552f3d097dff8454caf28f84c246d917, type: 3}
   - {fileID: 6658248698423468219, guid: ca7cb59cced0785428fc98eb6078a673, type: 3}
   - {fileID: 6658248698423468219, guid: f6513b81041d8404980aab3cc8b8ba56, type: 3}
@@ -2356,7 +2356,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1931924068}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Weapon
   m_TagString: Untagged
   m_Icon: {fileID: 0}

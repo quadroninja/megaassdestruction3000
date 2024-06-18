@@ -12,10 +12,10 @@ GameObject:
   - component: {fileID: 2251892758775187171}
   - component: {fileID: 6870908408307197641}
   - component: {fileID: 3178644656565206471}
-  - component: {fileID: -6034658179118369430}
-  - component: {fileID: -1272170921326239876}
+  - component: {fileID: -71927932275546869}
+  - component: {fileID: -4501950465647332648}
   m_Layer: 3
-  m_Name: Hooker
+  m_Name: Exploder 1
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -31,7 +31,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 5.98, y: 2.11, z: 0}
-  m_LocalScale: {x: 0.5, y: 0.5, z: 1}
+  m_LocalScale: {x: 0.2, y: 0.2, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -78,7 +78,7 @@ SpriteRenderer:
   m_SortingLayer: 1
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 1462b1c8b75ad0444a8fb644f7c44bec, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.12941177, g: 0.227451, b: 0.32941177, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -150,7 +150,7 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!114 &-6034658179118369430
+--- !u!114 &-71927932275546869
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -159,26 +159,28 @@ MonoBehaviour:
   m_GameObject: {fileID: 6658248698423468219}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ca4aca91153f33b4c8f87ffc7ffeefbe, type: 3}
+  m_Script: {fileID: 11500000, guid: 8dff4c7bc337eff4aa53cb1cfe68829d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 50
-  damage: 75
+  ExplosionRadius: 0.5
+  minSpawnRadius: 0
+  maxSpawnRadius: 0
+  cnt: 1
+  bigBadaBum: {fileID: 3557162656710350807, guid: 7599e3923a973854d8785487f55b786b, type: 3}
+--- !u!114 &-4501950465647332648
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6658248698423468219}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f39c95479abbf6c4e980ebb6b7d4ed15, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 15
+  damage: 0
   player: {fileID: 0}
-  movespeed: 0.03
-  hookShot: {fileID: -1272170921326239876}
---- !u!114 &-1272170921326239876
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6658248698423468219}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 701f4b34bcdc01a478c25c436f79be7d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cooldownTime: 5
-  pullRadius: 5
-  pullForce: 10000
+  movespeed: 0.07
+  explode: {fileID: -71927932275546869}
