@@ -19,12 +19,6 @@ public class Enemy : MonoBehaviour
     }
     public void Update()
     {
-        
-        /*RaycastHit2D hitInfo = Physics2D.Raycast(transform.position, transform.up);
-        if (hitInfo.collider.CompareTag("Player"))
-        {
-            hitInfo.collider.GetComponent<HealthChanger>().TakeDamage(damage);
-        }*/
         if (health <= 0)
         {
             Destroy(gameObject);

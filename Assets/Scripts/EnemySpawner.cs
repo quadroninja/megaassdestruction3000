@@ -14,22 +14,22 @@ public class EnemySpawner : MonoBehaviour
     public float spawnIntervalMin = 0.5f; // ћинимальный интервал спавна (в секундах)
     public float spawnIntervalMax = 2f; // ћаксимальный интервал спавна (в секундах)
 
-    public float waveDuration = 30f; // ƒлительность волны (в секундах)
-    public int maxEnemiesPerWave = 10; // ћаксимальное количество врагов за волну
+    public float[] waveDuration; // ƒлительность волны (в секундах)
+    public int[] maxEnemiesPerWave; // ћаксимальное количество врагов за волну
 
-    public TextMeshProUGUI waveText; // »спользуйте TextMeshProUGUI
-    public TextMeshProUGUI timerText; // »спользуйте TextMeshProUGUI
+    public TextMeshProUGUI waveText;
+    public TextMeshProUGUI timerText;
 
     public int currentWave = 1; // “екуща€ волна
     private float waveStartTime; // ¬рем€ начала волны
-    private int enemiesSpawnedThisWave = 0; //  оличество врагов, спавненных на текущей волне
+    private int enemiesSpawnedThisWave = 0; //  оличество врагов, заспавненных на текущей волне
 
-    public int pointsPerWave = 100; // ќчки дл€ спавна врагов на волне
+    public int[] pointsPerWave; // ќчки дл€ спавна врагов на волне
     private int currentPoints = 0;
     public int[] enemyPointCosts = { 10, 20, 30, 40, 50 }; // —тоимость каждого типа врага в очках
 
-    // ¬еро€тности по€влени€ врагов на каждой волне (можно заменить на более гибкий алгоритм)
-    private float[][] enemyProbabilities = {
+    // ¬еро€тности по€влени€ врагов на каждой волне
+    public float[][] enemyProbabilities = {
         new float[] { 0.75f, 0.20f, 0.04f, 0.01f, 0.00f }, // 1 волна
         new float[] { 0.65f, 0.25f, 0.06f, 0.02f, 0.02f }, // 2 волна
         new float[] { 0.55f, 0.30f, 0.10f, 0.10f, 0.00f },
@@ -49,7 +49,7 @@ public class EnemySpawner : MonoBehaviour
         new float[] { 0f, 0.20f, 0.04f, 0.01f, 0.00f },
         new float[] { 0f, 0.20f, 0.04f, 0.01f, 0.00f },
         new float[] { 0f, 0.20f, 0.04f, 0.01f, 0.00f },
-        new float[] { 0f, 0.20f, 0.04f, 0.01f, 0.00f }// добавить: босс, тут впринципе 1 заспавнил а дальше как в обычной волне
+        new float[] { 0f, 0.20f, 0.04f, 0.01f, 0.00f },// добавить: босс, тут впринципе 1 заспавнил а дальше как в обычной волне
         // ... и так далее дл€ каждой волны
     };
 
@@ -89,7 +89,7 @@ public class EnemySpawner : MonoBehaviour
     // ќбновление таймера волны
     void UpdateWaveTimer()
     {
-        float timeRemaining = waveDuration - (Time.time - waveStartTime);
+        float timeRemaining = waveDuration[currentWave - 1] - (Time.time - waveStartTime);
         timerText.text = "Time: " + Mathf.FloorToInt(timeRemaining);
 
         if (timeRemaining <= 0 && waveStarted==true)
@@ -127,8 +127,8 @@ public class EnemySpawner : MonoBehaviour
     void SpawnEnemyGroup()
     {
         // ќпредел€ем количество врагов дл€ спавна
-        int enemyCount = Random.Range(1, maxEnemiesPerWave + 1);
-        currentPoints = pointsPerWave;
+        int enemyCount = Random.Range(1, maxEnemiesPerWave[currentWave-1] + 1);
+        currentPoints = pointsPerWave[currentWave-1];
         // ¬ычисл€ем текущие веро€тности спавна дл€ текущей волны
         float[] currentProbabilities = enemyProbabilities[currentWave-1];
 

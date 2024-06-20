@@ -163,5 +163,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 1
   damage: 20
-  player: {fileID: 0}
-  movespeed: 0.15
+  movespeed: 0.1

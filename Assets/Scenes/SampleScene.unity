@@ -2037,9 +2037,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyPrefabs:
-  - {fileID: 6658248698423468219, guid: 69e486b95a705494c8e9e97d3bdd9f86, type: 3}
+  - {fileID: 6658248698423468219, guid: f6513b81041d8404980aab3cc8b8ba56, type: 3}
   - {fileID: 6658248698423468219, guid: 552f3d097dff8454caf28f84c246d917, type: 3}
   - {fileID: 6658248698423468219, guid: ca7cb59cced0785428fc98eb6078a673, type: 3}
+  - {fileID: 6658248698423468219, guid: 4e77c75aa6b766644a3b02b1f24317f3, type: 3}
+  - {fileID: 6658248698423468219, guid: 69e486b95a705494c8e9e97d3bdd9f86, type: 3}
   - {fileID: 6658248698423468219, guid: f6513b81041d8404980aab3cc8b8ba56, type: 3}
   - {fileID: 6658248698423468219, guid: a6cd1b3322e903545a1246d16e2ab6cd, type: 3}
   player: {fileID: 1290037012}
@@ -2047,13 +2049,15 @@ MonoBehaviour:
   spawnRadiusMax: 15
   spawnIntervalMin: 3
   spawnIntervalMax: 6
-  waveDuration: 30
-  maxEnemiesPerWave: 5
+  waveDuration:
+  - 30
+  - 60
+  maxEnemiesPerWave: 050000000a000000
   waveText: {fileID: 873046617}
   timerText: {fileID: 525506918}
   currentWave: 1
-  pointsPerWave: 100
-  enemyPointCosts: 0a000000140000001e0000002800000032000000
+  pointsPerWave: 64000000c8000000
+  enemyPointCosts: 0a000000140000001e00000028000000320000003c00000046000000
   startWindow: {fileID: 2125546909}
   startButton: {fileID: 1111509978}
 --- !u!4 &1720246920
