@@ -2,8 +2,8 @@ using UnityEngine;
 
 public class AutoWeapon : MonoBehaviour
 {
-    public GameObject[] bulletPrefabs; // Массив префабов пули
-    public float attackRange; // Дальность атаки
+    public GameObject[] bulletPrefabs; // Массив префабов атак
+    public float attackRange;
     private int bulletIndex = 0;
 
     void Update()
@@ -16,7 +16,6 @@ public class AutoWeapon : MonoBehaviour
                 // Поиск ближайшего врага
                 GameObject closestEnemy = FindClosestEnemy();
 
-                // Если враг найден в диапазоне атаки
                 if (closestEnemy != null)
                 {
                     // Поворот оружия к врагу
@@ -33,12 +32,11 @@ public class AutoWeapon : MonoBehaviour
         bulletIndex = 0;
     }
 
-    // Поиск ближайшего врага
     GameObject FindClosestEnemy()
     {
         GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
         GameObject closestEnemy = null;
-        float closestDistance = attackRange; // Начальное значение
+        float closestDistance = attackRange;
 
         foreach (GameObject enemy in enemies)
         {
@@ -56,13 +54,10 @@ public class AutoWeapon : MonoBehaviour
     // Выстрел пулей
     void FireBullet(Vector2 targetPosition)
     {
-        // Создание пули
         GameObject bullet = Instantiate(bulletPrefabs[bulletIndex], transform.position, Quaternion.identity);
 
-        // Направление пули
         Vector2 direction = (targetPosition - (Vector2)transform.position).normalized;
 
-        // Применение силы
-        bullet.transform.up = direction; // Поворачивает пулю в направлении "верх"
+        bullet.transform.up = direction; // вкрх пули теперь ближайший враг
     }
 }
