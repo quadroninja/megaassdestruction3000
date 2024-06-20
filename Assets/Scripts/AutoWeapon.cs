@@ -4,35 +4,33 @@ public class AutoWeapon : MonoBehaviour
 {
     public GameObject[] bulletPrefabs; // Массив префабов пули
     public float attackRange; // Дальность атаки
-    public float atkCooldown; // Время перезарядки между выстрелами
-
-    private float nextAttackTime;
-    private int currentBulletIndex = 0; // Индекс текущей пули
+    private int bulletIndex = 0;
 
     void Update()
     {
-        // Проверка, можно ли атаковать
-        if (Time.time >= nextAttackTime)
+        foreach(var bullet in bulletPrefabs)
         {
-            // Поиск ближайшего врага
-            GameObject closestEnemy = FindClosestEnemy();
-
-            // Если враг найден в диапазоне атаки
-            if (closestEnemy != null)
+            BulletBehavior weapon = bullet.GetComponent<BulletBehavior>();
+            if (weapon.cooldown <= 0)
             {
-                // Поворот оружия к врагу
-                transform.LookAt(closestEnemy.transform);
+                // Поиск ближайшего врага
+                GameObject closestEnemy = FindClosestEnemy();
 
-                // Выстрел пулей
-                FireBullet(closestEnemy.transform.position);
+                // Если враг найден в диапазоне атаки
+                if (closestEnemy != null)
+                {
+                    // Поворот оружия к врагу
+                    transform.LookAt(closestEnemy.transform);
 
-                // Обновление времени следующего выстрела
-                nextAttackTime = Time.time + atkCooldown;
+                    FireBullet(closestEnemy.transform.position);
 
-                // Переход к следующему префабу пули в массиве
-                currentBulletIndex = (currentBulletIndex + 1) % bulletPrefabs.Length;
+                    weapon.reload();
+                }
             }
+            else weapon.cooldown -= Time.deltaTime;
+            bulletIndex++;
         }
+        bulletIndex = 0;
     }
 
     // Поиск ближайшего врага
@@ -59,12 +57,12 @@ public class AutoWeapon : MonoBehaviour
     void FireBullet(Vector2 targetPosition)
     {
         // Создание пули
-        GameObject bullet = Instantiate(bulletPrefabs[currentBulletIndex], transform.position, Quaternion.identity);
+        GameObject bullet = Instantiate(bulletPrefabs[bulletIndex], transform.position, Quaternion.identity);
 
         // Направление пули
         Vector2 direction = (targetPosition - (Vector2)transform.position).normalized;
 
         // Применение силы
-        bullet.GetComponent<Rigidbody2D>().AddForce(direction * bullet.GetComponent<BulletBehavior>().speed);
+        bullet.transform.up = direction; // Поворачивает пулю в направлении "верх"
     }
 }

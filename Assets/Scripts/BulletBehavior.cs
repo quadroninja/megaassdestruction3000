@@ -7,11 +7,17 @@ public class BulletBehavior : MonoBehaviour
     public float speed;
     public float lifetime;
     public float distance;
+    public float atkSpeed;
+    public float cooldown;
     public int damage;
     public float tickTime;
     private float timeCheck;
     public LayerMask whatIsSolid;
 
+    void Start()
+    {
+        cooldown = atkSpeed;
+    }
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.gameObject.CompareTag("Enemy") && timeCheck < 0)
@@ -30,5 +36,9 @@ public class BulletBehavior : MonoBehaviour
         }
         else lifetime -= Time.deltaTime;
         transform.Translate(Vector2.up*speed*Time.deltaTime);
+    }
+    public void reload()
+    {
+        cooldown = atkSpeed;
     }
 }
