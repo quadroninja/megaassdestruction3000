@@ -7,7 +7,6 @@ using System.Collections.Generic;
 public class EnemySpawner : MonoBehaviour
 {
     public GameObject[] enemyPrefabs; // Массив префабов врагов
-    public List<GameObject> enemySpawned;
     public Transform player; // Ссылка на игрока
 
     public float spawnRadiusMin = 2f; // Минимальный радиус спавна
@@ -106,7 +105,8 @@ public class EnemySpawner : MonoBehaviour
         waveStarted = false;
         StopWaveSpawning(); // Останавливаем спавн врагов
         currentWave++;
-        foreach (GameObject enemy in enemySpawned)
+        GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
+        foreach (GameObject enemy in enemies)
         {
             Destroy(enemy);
         }
@@ -150,7 +150,6 @@ public class EnemySpawner : MonoBehaviour
 
             // Создаем врага
             GameObject enemy = Instantiate(enemyPrefabs[enemyIndex], spawnPosition, Quaternion.identity);
-            enemySpawned.Add(enemy);
             Enemy enemyScript = enemy.GetComponent<Enemy>();
             if (enemyScript != null)
             {

@@ -1802,7 +1802,6 @@ MonoBehaviour:
   - {fileID: 6658248698423468219, guid: 69e486b95a705494c8e9e97d3bdd9f86, type: 3}
   - {fileID: 6658248698423468219, guid: f6513b81041d8404980aab3cc8b8ba56, type: 3}
   - {fileID: 6658248698423468219, guid: a6cd1b3322e903545a1246d16e2ab6cd, type: 3}
-  enemySpawned: []
   player: {fileID: 1290037012}
   spawnRadiusMin: 10
   spawnRadiusMax: 15

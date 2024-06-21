@@ -29,23 +29,19 @@ public class EnemyShoot : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Vector3 mousePos = SceneCamera.ScreenToWorldPoint(Input.mousePosition);
-        Vector3 diff = player.position - transform.position;
-        float EnemyRotation = Mathf.Atan2(diff.y,  diff.x) * Mathf.Rad2Deg;
-        transform.rotation = Quaternion.Euler(0f, 0f, EnemyRotation-offset);
+        transform.LookAt(player);
         if (Vector2.Distance(transform.position, player.transform.position) <= spawnRadius)
         {
             DestroyAllSpawned();
         }
         if (timeCheck <= 0)
         {
-            if (Input.GetMouseButton(0) && Vector2.Distance(transform.position, player.transform.position) > spawnRadius && cnt<=maxspawn)
-            {
-                GameObject spw = Instantiate(bullet, transform.position, transform.rotation);
-                spawned.Add(spw);
-                timeCheck = atkSpeed;
-                cnt++;
-            }
+            GameObject spw = Instantiate(bullet, transform.position, transform.rotation);
+            spawned.Add(spw);
+            Vector2 direction = ((Vector2)player.position - (Vector2)transform.position).normalized;
+            spw.transform.up = direction;
+            timeCheck = atkSpeed;
+            cnt++;
         }
         else timeCheck -= Time.deltaTime;
     }
