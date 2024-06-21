@@ -23,6 +23,7 @@ public class HealthChanger : MonoBehaviour
         {
             TakeDamage(20);
         }
+        timeCheck -= Time.deltaTime;
     }
 
     public void TakeDamage(int damage)
@@ -33,7 +34,6 @@ public class HealthChanger : MonoBehaviour
             healthBar.ChangeHealth(currentHealth);
             timeCheck = invisibilityTime;
         }
-        else timeCheck -= Time.deltaTime;
         if (currentHealth <= 0)
         {
             Destroy(gameObject);

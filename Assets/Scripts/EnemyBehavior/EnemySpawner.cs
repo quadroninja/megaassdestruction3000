@@ -7,6 +7,7 @@ using System.Collections.Generic;
 public class EnemySpawner : MonoBehaviour
 {
     public GameObject[] enemyPrefabs; // Массив префабов врагов
+    public List<GameObject> enemySpawned;
     public Transform player; // Ссылка на игрока
 
     public float spawnRadiusMin = 2f; // Минимальный радиус спавна
@@ -64,6 +65,7 @@ public class EnemySpawner : MonoBehaviour
 
     void Start()
     {
+        startWindow.SetActive(false);
         StartWave();
     }
 
@@ -104,6 +106,10 @@ public class EnemySpawner : MonoBehaviour
         waveStarted = false;
         StopWaveSpawning(); // Останавливаем спавн врагов
         currentWave++;
+        foreach (GameObject enemy in enemySpawned)
+        {
+            Destroy(enemy);
+        }
         if (currentWave > 20)
         {
             // Конец игры
@@ -112,15 +118,15 @@ public class EnemySpawner : MonoBehaviour
         }
         // Показываем окно "Старт"
         startWindow.SetActive(true);
-        startButton.onClick.AddListener(StartNextWave);
+        Time.timeScale = 0f;
     }
 
     // Запуск следующей волны при нажатии на кнопку "Старт"
-    void StartNextWave()
+    public void StartNextWave()
     {
         // Скрываем окно "Старт"
         startWindow.SetActive(false);
-        startButton.onClick.RemoveAllListeners();
+        Time.timeScale = 1f;
         StartWave(); // Запускаем следующую волну
     }
 
@@ -144,7 +150,7 @@ public class EnemySpawner : MonoBehaviour
 
             // Создаем врага
             GameObject enemy = Instantiate(enemyPrefabs[enemyIndex], spawnPosition, Quaternion.identity);
-
+            enemySpawned.Add(enemy);
             Enemy enemyScript = enemy.GetComponent<Enemy>();
             if (enemyScript != null)
             {
