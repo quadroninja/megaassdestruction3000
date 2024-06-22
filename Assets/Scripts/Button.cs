@@ -1,18 +1,21 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
-public class Button : MonoBehaviour
+public class ShopButton : MonoBehaviour
 {
-    // Start is called before the first frame update
+    public GameObject[] weapons;
+    public AutoWeapon weaponStorage;
+    private GameObject buffer;
     void Start()
     {
-        
+        int randomIndex = Random.Range(0, weapons.Length);
+        GetComponent<Image>().sprite = weapons[randomIndex].GetComponent<SpriteRenderer>().sprite;
+        buffer = weapons[randomIndex];
     }
-
-    // Update is called once per frame
-    void Update()
+    public void OnClick()
     {
-        
+        weaponStorage.addWeapon(buffer);
     }
 }

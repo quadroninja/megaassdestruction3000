@@ -15,6 +15,7 @@ public class EnemySpawner : MonoBehaviour
     public float spawnIntervalMax = 2f; // ћаксимальный интервал спавна (в секундах)
 
     public float[] waveDuration; // ƒлительность волны (в секундах)
+    public int[] minEnemiesPerWave;
     public int[] maxEnemiesPerWave; // ћаксимальное количество врагов за волну
 
     public TextMeshProUGUI waveText;
@@ -133,7 +134,7 @@ public class EnemySpawner : MonoBehaviour
     void SpawnEnemyGroup()
     {
         // ќпредел€ем количество врагов дл€ спавна
-        int enemyCount = Random.Range(1, maxEnemiesPerWave[currentWave-1] + 1);
+        int enemyCount = Random.Range(minEnemiesPerWave[currentWave-1], maxEnemiesPerWave[currentWave-1] + 1);
         currentPoints = pointsPerWave[currentWave-1];
         // ¬ычисл€ем текущие веро€тности спавна дл€ текущей волны
         float[] currentProbabilities = enemyProbabilities[currentWave-1];

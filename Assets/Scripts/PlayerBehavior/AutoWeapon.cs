@@ -3,6 +3,7 @@ using UnityEngine;
 public class AutoWeapon : MonoBehaviour
 {
     public GameObject[] bulletPrefabs; // Массив префабов атак
+    private int weaponsAvilable = 0;
     public float attackRange;
     private int bulletIndex = 0;
 
@@ -10,23 +11,26 @@ public class AutoWeapon : MonoBehaviour
     {
         foreach(var bullet in bulletPrefabs)
         {
-            BulletBehavior weapon = bullet.GetComponent<BulletBehavior>();
-            if (weapon.cooldown <= 0)
+            if (bullet != null)
             {
-                // Поиск ближайшего врага
-                GameObject closestEnemy = FindClosestEnemy();
-
-                if (closestEnemy != null)
+                BulletBehavior weapon = bullet.GetComponent<BulletBehavior>();
+                if (weapon.cooldown <= 0)
                 {
-                    // Поворот оружия к врагу
-                    transform.LookAt(closestEnemy.transform);
+                    // Поиск ближайшего врага
+                    GameObject closestEnemy = FindClosestEnemy();
 
-                    FireBullet(closestEnemy.transform.position);
+                    if (closestEnemy != null)
+                    {
+                        // Поворот оружия к врагу
+                        transform.LookAt(closestEnemy.transform);
 
-                    weapon.reload();
+                        FireBullet(closestEnemy.transform.position);
+
+                        weapon.reload();
+                    }
                 }
+                else weapon.cooldown -= Time.deltaTime;
             }
-            else weapon.cooldown -= Time.deltaTime;
             bulletIndex++;
         }
         bulletIndex = 0;
@@ -59,5 +63,15 @@ public class AutoWeapon : MonoBehaviour
         Vector2 direction = (targetPosition - (Vector2)transform.position).normalized;
 
         bullet.transform.up = direction; // вкрх пули теперь ближайший враг
+    }
+
+    public void addWeapon(GameObject weapon)
+    {
+        if (weaponsAvilable < bulletPrefabs.Length)
+        {
+            bulletPrefabs[weaponsAvilable] = weapon;
+            weaponsAvilable++;
+            Debug.Log("Added weapon: " + weapon.name);
+        }
     }
 }
