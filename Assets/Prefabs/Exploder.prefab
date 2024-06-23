@@ -181,6 +181,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 15
   damage: 10
-  player: {fileID: 0}
-  movespeed: 0.07
+  movespeed: 0.01
   explode: {fileID: -71927932275546869}

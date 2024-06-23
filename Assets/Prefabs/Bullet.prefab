@@ -103,7 +103,7 @@ MonoBehaviour:
   lifetime: 10
   distance: 100
   atkSpeed: 2
-  cooldown: 0.1608749
+  cooldown: 0.4752232
   damage: 20
   tickTime: 0
   whatIsSolid:
