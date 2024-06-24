@@ -6,39 +6,35 @@ public class BulletBehavior : MonoBehaviour
 {
     public float speed;
     public float lifetime;
-    public float distance;
-    public float atkSpeed;
-    public float cooldown;
     public int damage;
-    public float tickTime;
-    private float timeCheck;
-    public LayerMask whatIsSolid;
+    public Vector2 direction;
 
-    void Start()
+    public void Init(float spd, float lt, int dam, Vector2 dir)
     {
-        cooldown = atkSpeed;
+        speed = spd;
+        lifetime = lt;
+        damage = dam;
+        direction = dir;
+        //this.transform.up = direction;
     }
+
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.gameObject.CompareTag("Enemy") && timeCheck < 0)
+        if (other.gameObject.CompareTag("Enemy"))
         {
             other.gameObject.GetComponent<Enemy>().TakeDamage(damage);
-            timeCheck = tickTime;
         }
     }
     // Update is called once per frame
     void Update()
     {
-        timeCheck -= Time.deltaTime;
         if (lifetime<0)
         {
             Destroy(gameObject);
         }
         else lifetime -= Time.deltaTime;
-        transform.Translate(Vector2.up*speed*Time.deltaTime);
-    }
-    public void reload()
-    {
-        cooldown = atkSpeed;
+
+        //transform.LookAt(direction);
+        transform.Translate(direction*speed*Time.deltaTime);
     }
 }

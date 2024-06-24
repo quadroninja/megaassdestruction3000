@@ -1,19 +1,22 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class LvlUp : MonoBehaviour
 {
+    public GameObject player;
     public GameObject lvlUpWindow;
     public Button[] options;
     public List<GameObject> weapons;
-    public AutoWeapon weaponStorage;
+    public WeaponInventory inventory;
     private List<int> usedIndexes = new List<int>();
 
     public void Equip(GameObject weapon)
     {
-        weaponStorage.addWeapon(weapon);
+        Debug.Log("Equip");
+        inventory.addWeapon(weapon);
         foreach (Button button in options)
         {
             button.gameObject.SetActive(false);
@@ -39,7 +42,8 @@ public class LvlUp : MonoBehaviour
             int randomIndex = GetUniqueRandomIndex();
             if (randomIndex != -1)
             {
-                button.GetComponent<Image>().sprite = weapons[randomIndex].GetComponent<SpriteRenderer>().sprite;
+                button.GetComponentInChildren<TextMeshProUGUI>().text = weapons[randomIndex].name;//randomIndex.ToString();
+                //button.GetComponent<Image>().sprite = weapons[randomIndex].GetComponent<SpriteRenderer>().sprite;
                 button.onClick.AddListener(() => Equip(weapons[randomIndex]));
             }
             else button.gameObject.SetActive(false);

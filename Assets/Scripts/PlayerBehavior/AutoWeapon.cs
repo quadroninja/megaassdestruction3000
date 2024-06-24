@@ -2,38 +2,34 @@ using UnityEngine;
 
 public class AutoWeapon : MonoBehaviour
 {
-    public GameObject[] bulletPrefabs; // Массив префабов атак
-    private int weaponsAvilable = 0;
+    public WeaponInventory inventory;
     public float attackRange;
-    private int bulletIndex = 0;
+
+
 
     void Update()
     {
-        foreach(var bullet in bulletPrefabs)
+        foreach(GameObject weapon in inventory.Weapons)
         {
-            if (bullet != null)
+            if (weapon != null)
             {
-                BulletBehavior weapon = bullet.GetComponent<BulletBehavior>();
-                if (weapon.cooldown <= 0)
+                WeaponBehaviour currentWeapon = weapon.GetComponent<WeaponBehaviour>();
+                if (currentWeapon.canShoot())
                 {
                     // Поиск ближайшего врага
                     GameObject closestEnemy = FindClosestEnemy();
 
                     if (closestEnemy != null)
                     {
+                        Debug.Log("pow");
                         // Поворот оружия к врагу
-                        transform.LookAt(closestEnemy.transform);
-
-                        FireBullet(closestEnemy.transform.position);
-
-                        weapon.reload();
+                        //currentWeapon.transform.LookAt(closestEnemy.transform.position);
+                        currentWeapon.transform.up = closestEnemy.transform.position - this.transform.position;
+                        currentWeapon.fire();
                     }
                 }
-                else weapon.cooldown -= Time.deltaTime;
             }
-            bulletIndex++;
         }
-        bulletIndex = 0;
     }
 
     GameObject FindClosestEnemy()
@@ -53,25 +49,5 @@ public class AutoWeapon : MonoBehaviour
         }
 
         return closestEnemy;
-    }
-
-    // Выстрел пулей
-    void FireBullet(Vector2 targetPosition)
-    {
-        GameObject bullet = Instantiate(bulletPrefabs[bulletIndex], transform.position, Quaternion.identity);
-
-        Vector2 direction = (targetPosition - (Vector2)transform.position).normalized;
-
-        bullet.transform.up = direction; // вкрх пули теперь ближайший враг
-    }
-
-    public void addWeapon(GameObject weapon)
-    {
-        if (weaponsAvilable < bulletPrefabs.Length)
-        {
-            bulletPrefabs[weaponsAvilable] = weapon;
-            weaponsAvilable++;
-            Debug.Log("Added weapon: " + weapon.name);
-        }
     }
 }
