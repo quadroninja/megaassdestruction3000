@@ -26,15 +26,14 @@ public class BulletBehavior : MonoBehaviour
         }
     }
     // Update is called once per frame
-    void Update()
+    public void Update()
     {
         if (lifetime<0)
         {
             Destroy(gameObject);
         }
         else lifetime -= Time.deltaTime;
-
-        //transform.LookAt(direction);
+        //transform.LookAt(new Vector3(direction.x, direction.y, 0f));
         transform.Translate(direction*speed*Time.deltaTime);
     }
 }
