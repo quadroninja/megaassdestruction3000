@@ -12,6 +12,7 @@ public class LvlUp : MonoBehaviour
     public List<GameObject> weapons;
     public WeaponInventory inventory;
     private List<int> usedIndexes = new List<int>();
+    private List<int> usedInventoryIndexes = new List<int>();
 
     public void Equip(GameObject weapon)
     {
@@ -22,6 +23,15 @@ public class LvlUp : MonoBehaviour
             button.gameObject.SetActive(false);
         }
         weapons.Remove(weapon);
+    }
+    public void Upgrade(int index)
+    {
+        Debug.Log("Upgraded "+ index);
+        inventory.upgradeWeapon(index);
+        foreach (Button button in options)
+        {
+            button.gameObject.SetActive(false);
+        }
     }
     void Start()
     {
@@ -36,17 +46,27 @@ public class LvlUp : MonoBehaviour
             button.onClick.RemoveAllListeners();
         }
         usedIndexes.Clear();
+        usedInventoryIndexes.Clear();
         Time.timeScale = 0f;
         foreach (Button button in options)
         {
-            int randomIndex = GetUniqueRandomIndex();
+            int randomIndex = GetUniqueRandomIndex(weapons, usedIndexes);
             if (randomIndex != -1)
             {
                 button.GetComponentInChildren<TextMeshProUGUI>().text = weapons[randomIndex].name;//randomIndex.ToString();
                 //button.GetComponent<Image>().sprite = weapons[randomIndex].GetComponent<SpriteRenderer>().sprite;
                 button.onClick.AddListener(() => Equip(weapons[randomIndex]));
             }
-            else button.gameObject.SetActive(false);
+            else
+            {
+                int randomUpgradeIndex = GetUniqueRandomIndex(inventory.Weapons, usedInventoryIndexes);
+                if (randomUpgradeIndex != -1)
+                {
+                    button.GetComponentInChildren<TextMeshProUGUI>().text = "Upgrade " + inventory.Weapons[randomUpgradeIndex].name;
+                    button.onClick.AddListener(() => Upgrade(randomUpgradeIndex));
+                }
+                else button.gameObject.SetActive(false);
+            }
         }
     }
 
@@ -56,16 +76,16 @@ public class LvlUp : MonoBehaviour
         Time.timeScale = 1f;
     }
 
-    private int GetUniqueRandomIndex()
+    private int GetUniqueRandomIndex(List<GameObject> list, List<int> Indexes)
     {
-        if (weapons.Count == 0)
+        if (list.Count == 0)
         {
             return -1; // Нет доступных оружий
         }
 
         int cnt = 0;
-        loop1: int randomIndex = Random.Range(0, weapons.Count);
-        foreach(int index in usedIndexes)
+        loop1: int randomIndex = Random.Range(0, list.Count);
+        foreach(int index in Indexes)
         {
             if (cnt > 20)
             {
@@ -77,7 +97,7 @@ public class LvlUp : MonoBehaviour
                 goto loop1;
             }
         }
-        usedIndexes.Add(randomIndex);
+        Indexes.Add(randomIndex);
         return randomIndex;
     }
 }

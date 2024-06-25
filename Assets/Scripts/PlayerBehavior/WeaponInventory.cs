@@ -21,4 +21,9 @@ public class WeaponInventory : MonoBehaviour
             Debug.Log("Added weapon: " + newWeapon.name);
         }
     }
+    public void upgradeWeapon(int index)
+    {
+        weapons[index].GetComponent<WeaponBehaviour>().newlevel();
+        Debug.Log(weapons[index].GetComponent<WeaponBehaviour>().level);
+    }
 }

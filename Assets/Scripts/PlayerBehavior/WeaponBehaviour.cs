@@ -5,12 +5,13 @@ using UnityEngine;
 public class WeaponBehaviour : MonoBehaviour
 {
     public GameObject bulletPrefab;
-    public float    speed;
+    public float speed;
     public float lifetime;
     public float distance;
     public float atkSpeed;
     public float cooldown;
     public int damage;
+    public int level = 1;
     public float tickTime;
     private float timeCheck;
     public LayerMask whatIsSolid;
@@ -32,6 +33,19 @@ public class WeaponBehaviour : MonoBehaviour
         return cooldown < 0;
     }
 
+    public void newlevel()
+    {
+        level++;
+        //weaponScalings();
+    }
+
+    /*public void weaponScalings(){
+      
+        damage=
+        speed=
+        liftime=
+        ט עה
+    }    */
     /*
     private void OnTriggerEnter2D(Collider2D other)
     {
