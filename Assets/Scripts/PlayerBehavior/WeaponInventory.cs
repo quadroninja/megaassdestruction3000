@@ -6,11 +6,30 @@ using UnityEngine;
 public class WeaponInventory : MonoBehaviour
 {
     public List<GameObject> weapons;
+    public List<GameObject> extra;
     public List<GameObject> Weapons { get { return weapons; } }
+    public List<GameObject> Extra { get { return extra; } }
     private int capacity = 3;
     //public int Capacity { get { return capacity; } }
 
+    public void addExtra(GameObject weapon)
+    {
+        GameObject newWeapon = Instantiate(weapon, transform.position, Quaternion.identity, transform);
+        extra.Add(newWeapon);
+        Debug.Log("Added weapon: " + newWeapon.name);
+    }
 
+    public void upgradeExtra(GameObject weapon)
+    {
+        foreach (GameObject w in extra)
+        {
+            var type = System.Type.GetType(w.GetComponent<WeaponBehaviour>().name);
+            if (type == System.Type.GetType(weapon.GetComponent<WeaponBehaviour>().name))
+            {
+                w.GetComponent<WeaponBehaviour>().newlevel();
+            }
+        }
+    }
     public void addWeapon(GameObject weapon)
     {
         Debug.Log(weapons.Count);
@@ -25,5 +44,6 @@ public class WeaponInventory : MonoBehaviour
     {
         weapons[index].GetComponent<WeaponBehaviour>().newlevel();
         Debug.Log(weapons[index].GetComponent<WeaponBehaviour>().level);
+        upgradeExtra(weapons[index]);
     }
 }

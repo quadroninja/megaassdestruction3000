@@ -17,10 +17,11 @@ public class WeaponBehaviour : MonoBehaviour
     public float cooldown;
     
     public int level = 1;
+    public bool upgradable;
+
     public float tickTime;
     private float timeCheck;
     public LayerMask whatIsSolid;
-
     public float speedScale;
     public float lifetimeScale;
     public double damageScale;
@@ -51,6 +52,7 @@ public class WeaponBehaviour : MonoBehaviour
     {
         level++;
         weaponScalings();
+        upgradable = true;
     }
 
     public void weaponScalings()
@@ -72,7 +74,7 @@ public class WeaponBehaviour : MonoBehaviour
     }
     */
     // Update is called once per frame
-    void Update()
+    public void Update()
     {
         cooldown -= Time.deltaTime;
     }

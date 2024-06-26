@@ -30,6 +30,27 @@ public class AutoWeapon : MonoBehaviour
                 }
             }
         }
+        foreach (GameObject weapon in inventory.Extra)
+        {
+            if (weapon != null)
+            {
+                WeaponBehaviour currentWeapon = weapon.GetComponent<WeaponBehaviour>();
+                if (currentWeapon.canShoot())
+                {
+                    // Поиск ближайшего врага
+                    GameObject closestEnemy = FindClosestEnemy();
+
+                    if (closestEnemy != null)
+                    {
+                        Debug.Log("pow");
+                        // Поворот оружия к врагу
+                        //currentWeapon.transform.LookAt(closestEnemy.transform.position);
+                        currentWeapon.transform.up = closestEnemy.transform.position - this.transform.position -  new Vector3(1f, 1f,0f);
+                        currentWeapon.fire();
+                    }
+                }
+            }
+        }
     }
 
     GameObject FindClosestEnemy()
