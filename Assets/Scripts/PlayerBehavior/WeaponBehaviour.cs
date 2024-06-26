@@ -7,17 +7,31 @@ public class WeaponBehaviour : MonoBehaviour
     public GameObject bulletPrefab;
     public float speed;
     public float lifetime;
-    public float distance;
     public float atkSpeed;
-    public float cooldown;
     public int damage;
+
+    public float baseSpeed;
+    public float baseLifetime;
+    public float baseAtkSpeed;
+    public int baseDamage;
+    public float cooldown;
+    
     public int level = 1;
     public float tickTime;
     private float timeCheck;
     public LayerMask whatIsSolid;
 
+    public float speedScale;
+    public float lifetimeScale;
+    public double damageScale;
+    public float atkSpeedScale;
+
     void Start()
     {
+        speed = baseSpeed;
+        lifetime = baseLifetime;
+        atkSpeed = baseAtkSpeed;
+        damage = baseDamage;
         cooldown = atkSpeed;
     }
     public void fire()
@@ -36,16 +50,17 @@ public class WeaponBehaviour : MonoBehaviour
     public void newlevel()
     {
         level++;
-        //weaponScalings();
+        weaponScalings();
     }
 
-    /*public void weaponScalings(){
-      
-        damage=
-        speed=
-        liftime=
-        ט עה
-    }    */
+    public void weaponScalings()
+    {
+        damage = (int)(baseDamage + (baseDamage * damageScale * (level-1)));
+        speed= baseSpeed + (baseSpeed * speedScale * (level-1));
+        lifetime = baseLifetime + (baseLifetime * lifetimeScale * (level-1));
+        atkSpeed = baseAtkSpeed - (baseAtkSpeed * atkSpeedScale * (level-1));
+        Debug.Log("Weapon scaled");
+    }
     /*
     private void OnTriggerEnter2D(Collider2D other)
     {

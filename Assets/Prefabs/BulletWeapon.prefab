@@ -45,13 +45,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bulletPrefab: {fileID: 3557162656710350807, guid: c459ae7d26313e8419dd45e9df629a7c, type: 3}
-  speed: 2
-  lifetime: 10
-  distance: 100
-  atkSpeed: 0.4
+  speed: 0
+  lifetime: 0
+  atkSpeed: 0
+  damage: 0
+  baseSpeed: 3
+  baseLifetime: 5
+  baseAtkSpeed: 1
+  baseDamage: 20
   cooldown: 0
-  damage: 40
+  level: 1
   tickTime: 0
   whatIsSolid:
     serializedVersion: 2
     m_Bits: 0
+  speedScale: 0.5
+  lifetimeScale: 1
+  damageScale: 0.15
+  atkSpeedScale: 0.15
