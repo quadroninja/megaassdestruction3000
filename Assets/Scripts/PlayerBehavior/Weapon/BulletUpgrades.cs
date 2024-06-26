@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class BulletUpgrades : WeaponBehaviour
 {
-    public WeaponInventory a;
+    public WeaponInventory inventory;
     // Start is called before the first frame update
     void Start()
     {
-        a= GameObject.FindGameObjectWithTag("WeaponInventory").GetComponent<WeaponInventory>();
+        inventory= GameObject.FindGameObjectWithTag("WeaponInventory").GetComponent<WeaponInventory>();
     }
 
     // Update is called once per frame
@@ -26,7 +26,7 @@ public class BulletUpgrades : WeaponBehaviour
     {
         if (base.level == 4)
         {
-            a.addExtra(gameObject);
+            inventory.addExtra(gameObject);
         }
     }
 }

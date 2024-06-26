@@ -47,6 +47,8 @@ public class AutoWeapon : MonoBehaviour
                         //currentWeapon.transform.LookAt(closestEnemy.transform.position);
                         currentWeapon.transform.up = closestEnemy.transform.position - this.transform.position -  new Vector3(1f, 1f,0f);
                         currentWeapon.fire();
+                        currentWeapon.transform.up = closestEnemy.transform.position - this.transform.position - new Vector3(-1f, -1f, 0f);
+                        currentWeapon.fire();
                     }
                 }
             }
