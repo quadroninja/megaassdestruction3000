@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 9010079734209937407}
-  - component: {fileID: 263215693961898699}
+  - component: {fileID: -6472531715407590217}
   m_Layer: 0
   m_Name: SwordWeapon
   m_TagString: Untagged
@@ -32,7 +32,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &263215693961898699
+--- !u!114 &-6472531715407590217
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -41,17 +41,28 @@ MonoBehaviour:
   m_GameObject: {fileID: 5969049385945749086}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4ec51bccb6d885340a84f73e76d8cdda, type: 3}
+  m_Script: {fileID: 11500000, guid: 9316e27cde9f54248b9c5a98e422e256, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   bulletPrefab: {fileID: 2428893236397216664, guid: fd33e4e4273f5394cbd8ab25958d278f, type: 3}
   speed: 0
-  lifetime: 1
-  distance: 100
-  atkSpeed: 1
+  lifetime: 0.1
+  atkSpeed: 2
+  damage: 40
+  baseSpeed: 0
+  baseLifetime: 0.1
+  baseAtkSpeed: 2
+  baseDamage: 40
   cooldown: 0
-  damage: 100
+  level: 1
+  upgradable: 0
   tickTime: 0
   whatIsSolid:
     serializedVersion: 2
     m_Bits: 0
+  speedScale: 0
+  lifetimeScale: 0
+  damageScale: 0.3
+  atkSpeedScale: 0.2
+  inventory: {fileID: 0}
+  scale: 0.2

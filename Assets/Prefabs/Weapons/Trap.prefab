@@ -176,5 +176,5 @@ MonoBehaviour:
   damage: 0
   direction: {x: 0, y: 0}
   explodable: 0
-  cooldown: 1.5
+  cooldown: 5
   explosion: {fileID: 3557162656710350807, guid: ee4312a158bfdda43938bb8aa099264e, type: 3}

@@ -163,5 +163,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 0
   lifetime: 0.1
-  damage: 100
+  damage: 200
   direction: {x: 0, y: 0}

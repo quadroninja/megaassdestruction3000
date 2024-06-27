@@ -26,7 +26,7 @@ public class TrapUpgrades : WeaponBehaviour
     {
         if (base.level == 4)
         {
-            base.baseSpeed=0.1f;
+            base.speed=1f;
             base.speedScale = 1f;
             base.bulletPrefab.GetComponent<Trap>().explodable=true;
         }

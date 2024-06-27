@@ -164,7 +164,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 5
   damage: 5
-  movespeed: 0.01
+  movespeed: 0.02
   swap: {fileID: 977772608433059404}
 --- !u!114 &977772608433059404
 MonoBehaviour:
@@ -180,5 +180,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cooldownTime: 5
   swapRadius: 5
-  angerSpeed: 3
+  angerSpeed: 0.3
   preparation: 0
