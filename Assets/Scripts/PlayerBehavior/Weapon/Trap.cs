@@ -4,10 +4,11 @@ using UnityEngine;
 
 public class Trap : BulletBehavior
 {
-    public bool explodable=false;
+    public bool explodable= false;
     public float cooldown;
     private float timer;
     public GameObject explosion;
+
     void Update()
     {
         timer -= Time.deltaTime;
@@ -17,7 +18,11 @@ public class Trap : BulletBehavior
             explode();
         }
     }
-    void explode()
+    public void change(bool i)
+    {
+        explodable = i;
+    }
+    public void explode()
     {
         Instantiate(explosion, transform.position, Quaternion.identity);
         timer = cooldown;

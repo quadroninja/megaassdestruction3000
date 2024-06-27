@@ -5,9 +5,14 @@ using UnityEngine;
 public class TrapUpgrades : WeaponBehaviour
 {
     public WeaponInventory inventory;
+    public bool explodable;
     // Start is called before the first frame update
     void Start()
     {
+        if (base.level == 1)
+        {
+            base.bulletPrefab.GetComponent<Trap>().change(false);
+        }
         inventory= GameObject.FindGameObjectWithTag("WeaponInventory").GetComponent<WeaponInventory>();
     }
 
@@ -26,9 +31,10 @@ public class TrapUpgrades : WeaponBehaviour
     {
         if (base.level == 4)
         {
-            base.speed=1f;
+            base.speed = 1f;
             base.speedScale = 1f;
-            base.bulletPrefab.GetComponent<Trap>().explodable=true;
+            explodable = true;
         }
+        base.bulletPrefab.GetComponent<Trap>().change(explodable);
     }
 }
