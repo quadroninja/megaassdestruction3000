@@ -164,7 +164,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 100
   damage: 0
-  player: {fileID: 0}
   movespeed: 0
 --- !u!114 &4104151609099039448
 MonoBehaviour:
@@ -179,9 +178,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spawned: []
-  bullet: {fileID: 6658248698423468219, guid: ff1952d50d041ca419000309c4f00e26, type: 3}
+  bullet: {fileID: 6658248698423468219, guid: 6bcb0d241112fe146b73148a1699039f, type: 3}
   player: {fileID: 0}
   spawnRadius: 5
   offset: 90
-  atkSpeed: 1
+  atkSpeed: 3
   maxspawn: 10

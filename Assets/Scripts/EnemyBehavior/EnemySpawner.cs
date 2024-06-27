@@ -30,33 +30,25 @@ public class EnemySpawner : MonoBehaviour
     public int[] enemyPointCosts = { 10, 20, 30, 40, 50 }; // Стоимость каждого типа врага в очках
 
     // Вероятности появления врагов на каждой волне
-    public float[][] enemyProbabilities = {
-        new float[] { 0.75f, 0.20f, 0.04f, 0.01f, 0.00f }, // 1 волна
-        new float[] { 0.65f, 0.25f, 0.06f, 0.02f, 0.02f }, // 2 волна
-        new float[] { 0.55f, 0.30f, 0.10f, 0.10f, 0.00f },
-        new float[] { 0.45f, 0.35f, 0.04f, 0.01f, 0.00f },
-        new float[] { 0.35f, 0.20f, 0.04f, 0.01f, 0.00f },
-        new float[] { 0f, 0.65f, 0.35f, 0f, 0.00f },// первый тест, волна только с мелкими чтоб проверить скорость урона и умение убегать
-        new float[] { 0.15f, 0.20f, 0.04f, 0.01f, 0.00f },
-        new float[] { 0.05f, 0.20f, 0.04f, 0.01f, 0.00f },
-        new float[] { 0f, 0.20f, 0.04f, 0.01f, 0.00f },
-        new float[] { 0f, 0.20f, 0.04f, 0.01f, 0.00f },
-        new float[] { 0.5f, 0f, 0f, 0.25f, 0.25f }, // тут учим игрока держаться на дистанции, чтобы не быть захуканым к толпе обычек + проверяем умение держаться на расстоянии
-        new float[] { 0f, 0.20f, 0.04f, 0.01f, 0.00f },
-        new float[] { 0f, 0.20f, 0.04f, 0.01f, 0.00f },
-        new float[] { 0f, 0.20f, 0.04f, 0.01f, 0.00f },
-        new float[] { 0f, 0.20f, 0.04f, 0.01f, 0.00f },
-        new float[] { 0f, 0f, 0f, 0f, 0f },// добавить: врагов к которым нужно подходить, полная противоположность 11 волне
-        new float[] { 0f, 0.20f, 0.04f, 0.01f, 0.00f },
-        new float[] { 0f, 0.20f, 0.04f, 0.01f, 0.00f },
-        new float[] { 0f, 0.20f, 0.04f, 0.01f, 0.00f },
-        new float[] { 0f, 0.20f, 0.04f, 0.01f, 0.00f },// добавить: босс, тут впринципе 1 заспавнил а дальше как в обычной волне
+    [SerializeField] float[][] enemyProbabilities = {
+        new float[] { 0.75f, 0.20f, 0.04f, 0.01f, 0.00f, 0.00f, 0.00f, 0.00f}, // 1 волна
+        new float[] { 0.65f, 0.25f, 0.06f, 0.02f, 0.02f, 0.00f, 0.00f, 0.00f}, // 2 волна
+        new float[] { 0.00f, 0.65f, 0.35f, 0.00f, 0.00f, 0.00f, 0.00f, 0.00f},// первый тест, волна только с мелкими чтоб проверить скорость урона и умение убегать
+        new float[] { 0.00f, 0.65f, 0.35f, 0.00f, 0.00f, 0.00f, 0.00f, 0.00f},
+        new float[] { 0.00f, 0.65f, 0.35f, 0.00f, 0.00f, 0.00f, 0.00f, 0.00f},
+        new float[] { 0.50f, 0.00f, 0.00f, 0.00f, 0.00f, 0.00f, 0.25f, 0.25f}, // тут учим игрока держаться на дистанции, чтобы не быть захуканым к толпе обычек + проверяем умение держаться на расстоянии
+        new float[] { 0.00f, 0.65f, 0.35f, 0.00f, 0.00f, 0.00f, 0.00f, 0.00f},
+        new float[] { 0.00f, 0.65f, 0.35f, 0.00f, 0.00f, 0.00f, 0.00f, 0.00f},
+        new float[] { 0.00f, 0.00f, 0.30f, 0.00f, 0.35f, 0.35f, 0.00f, 0.00f},// добавить: врагов к которым нужно подходить, полная противоположность 11 волне
+        new float[] { 0.00f, 0.65f, 0.35f, 0.00f, 0.00f, 0.00f, 0.00f, 0.00f},
+        new float[] { 0.00f, 0.65f, 0.35f, 0.00f, 0.00f, 0.00f, 0.00f, 0.00f},
+        new float[] { 0.00f, 0.65f, 0.35f, 0.00f, 0.00f, 0.00f, 0.00f, 0.00f, 0f},// добавить: босс, тут впринципе 1 заспавнил а дальше как в обычной волне
         // ... и так далее для каждой волны
     };
 
     // Масштабирование урона и здоровья врагов по волнам
-    private int[] damageScale = { 1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1};
-    private int[] healthScale = { 1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1};
+    private double[] damageScale = { 1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1};
+    private double[] healthScale = { 1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1};
 
     public GameObject startWindow; // Префаб окна "Старт"
     public Button startButton; // Кнопка "Старт" в окне
@@ -154,8 +146,8 @@ public class EnemySpawner : MonoBehaviour
             Enemy enemyScript = enemy.GetComponent<Enemy>();
             if (enemyScript != null)
             {
-                enemyScript.damage = enemyScript.damage * damageScale[currentWave - 1];
-                enemyScript.health = enemyScript.health * healthScale[currentWave - 1];
+                enemyScript.damage = (int)(enemyScript.damage * damageScale[currentWave - 1]);
+                enemyScript.health = (int)(enemyScript.health * healthScale[currentWave - 1]);
             }
             enemiesSpawnedThisWave++;
         }

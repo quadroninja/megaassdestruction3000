@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class Swap : MonoBehaviour
 {
@@ -8,19 +9,54 @@ public class Swap : MonoBehaviour
     // Параметры способности
     public float cooldownTime = 5f;
     public float swapRadius = 5f;
+    public float angerSpeed = 1f;
+    public float preparation = 0f; //от 0 до 1
 
+    private SpriteRenderer sprite;
     private Vector3 swapBuffer;
-    // Время до следующей активации
-    private float nextActivationTime;
 
-    public void ActivateSwapAbility()
+    GameObject player;
+
+    void Start()
     {
-        ApplySwapForce();
+        player = GameObject.FindGameObjectWithTag("Player");
+        sprite = gameObject.GetComponent<SpriteRenderer>();
+        StartCoroutine(AttackCoroutine());
     }
+
+    bool IsPlayerInRange()
+    {
+        return Vector2.Distance(transform.position, player.transform.position) <= swapRadius;
+    }
+
+    IEnumerator AttackCoroutine()
+    {
+        while (true)
+        {
+            if (IsPlayerInRange())
+            {
+                preparation += Time.deltaTime * angerSpeed;
+                yield return null;
+            }
+            else
+            {
+                preparation = Math.Max(0, preparation - Time.deltaTime * angerSpeed);
+                yield return null;
+            }
+
+            if (preparation >= 1 && IsPlayerInRange())
+            {
+                ApplySwapForce();
+                preparation = 0;
+                yield return new WaitForSeconds(cooldownTime);
+            }
+        }
+    }
+
     private void ApplySwapForce()
     {
-        GameObject player = GameObject.FindGameObjectWithTag("Player");
-        if (Vector2.Distance(transform.position, player.transform.position) <= swapRadius)
+        
+        if (IsPlayerInRange())
         {
             swapBuffer = player.transform.position;
             player.transform.position = transform.position;
@@ -28,15 +64,8 @@ public class Swap : MonoBehaviour
         }
     }
 
-    // Обновление состояния
-    public void Update()
+    void Update()
     {
-        // Проверка времени для активации способности
-        if (nextActivationTime < 0)
-        {
-            ActivateSwapAbility();
-            nextActivationTime = cooldownTime;
-        }
-        else nextActivationTime -= Time.deltaTime;
+        sprite.color = new Color(1 - preparation, sprite.color.g, sprite.color.b, preparation);
     }
 }

@@ -34,7 +34,7 @@ public class EnemyShoot : MonoBehaviour
         {
             DestroyAllSpawned();
         }
-        if (timeCheck <= 0)
+        if (timeCheck <= 0 && spawned.Count<maxspawn)
         {
             GameObject spw = Instantiate(bullet, transform.position, transform.rotation);
             spawned.Add(spw);
