@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
 public class WeaponBehaviour : MonoBehaviour
 {
     public GameObject bulletPrefab;
@@ -50,9 +49,12 @@ public class WeaponBehaviour : MonoBehaviour
 
     public void newlevel()
     {
-        level++;
-        weaponScalings();
-        upgradable = true;
+        if (level < 4)
+        {
+            level++;
+            weaponScalings();
+            upgradable = true;
+        }
     }
 
     public void weaponScalings()

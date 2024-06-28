@@ -45,8 +45,21 @@ public class LvlUp : MonoBehaviour
             button.gameObject.SetActive(true);
             button.onClick.RemoveAllListeners();
         }
+        if (inventory.Weapons.Count == inventory.Capacity)
+        {
+            weapons.Clear();
+        }
         usedIndexes.Clear();
         usedInventoryIndexes.Clear();
+        int cnt = 0;
+        foreach (GameObject weapon in inventory.Weapons)
+        {
+            if (weapon.GetComponent<WeaponBehaviour>().level == 4)
+            {
+                usedInventoryIndexes.Add(cnt);
+            }
+            cnt++;
+        }
         Time.timeScale = 0f;
         foreach (Button button in options)
         {

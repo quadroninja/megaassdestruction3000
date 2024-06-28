@@ -10,7 +10,7 @@ public class WeaponInventory : MonoBehaviour
     public List<GameObject> Weapons { get { return weapons; } }
     public List<GameObject> Extra { get { return extra; } }
     private int capacity = 3;
-    //public int Capacity { get { return capacity; } }
+    public int Capacity { get { return capacity; } }
 
     public void addExtra(GameObject weapon)
     {
@@ -25,6 +25,7 @@ public class WeaponInventory : MonoBehaviour
         if (weapons.Count < capacity)
         {
             GameObject newWeapon = Instantiate(weapon, transform.position, Quaternion.identity, transform);
+            newWeapon.name = newWeapon.name.Replace("(Clone)", "").Trim();
             weapons.Add(newWeapon);
             Debug.Log("Added weapon: " + newWeapon.name);
         }
