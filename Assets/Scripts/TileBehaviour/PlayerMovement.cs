@@ -11,6 +11,7 @@ public class PlayerMovement : MonoBehaviour
     public float maxStunTime;
     private Vector2 moveDirection;
 
+    public Animator animator;
     // Update is called once per frame
     void Update()
     {
