@@ -49,7 +49,7 @@ public class WeaponBehaviour : MonoBehaviour
 
     public void newlevel()
     {
-        if (level < 4)
+        if (level < 5)
         {
             level++;
             weaponScalings();

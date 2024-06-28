@@ -26,10 +26,10 @@ public class SwordUpgrades : WeaponBehaviour
 
     public void coreFeatures()
     {
-        if (base.level == 4)
+        if (base.level == 5)
         {
-            base.speed = 3f;
-            base.lifetime = 0.7f;
+            base.speed = 4f;
+            base.lifetime = 1f;
         }
     }
 }

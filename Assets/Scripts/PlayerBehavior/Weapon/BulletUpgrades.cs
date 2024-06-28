@@ -24,9 +24,9 @@ public class BulletUpgrades : WeaponBehaviour
 
     public void coreFeatures()
     {
-        if (base.level == 4)
+        if (base.level == 5)
         {
-            base.atkSpeed=0.3f;
+            base.atkSpeed=0.2f;
             base.atkSpeedScale = 0f;
             inventory.addExtra(gameObject);
         }

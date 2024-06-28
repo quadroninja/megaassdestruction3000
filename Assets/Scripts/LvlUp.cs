@@ -54,7 +54,7 @@ public class LvlUp : MonoBehaviour
         int cnt = 0;
         foreach (GameObject weapon in inventory.Weapons)
         {
-            if (weapon.GetComponent<WeaponBehaviour>().level == 4)
+            if (weapon.GetComponent<WeaponBehaviour>().level == 5)
             {
                 usedInventoryIndexes.Add(cnt);
             }

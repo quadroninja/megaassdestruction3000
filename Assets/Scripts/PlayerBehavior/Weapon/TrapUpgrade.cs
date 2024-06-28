@@ -29,7 +29,7 @@ public class TrapUpgrades : WeaponBehaviour
 
     public void coreFeatures()
     {
-        if (base.level == 4)
+        if (base.level == 5)
         {
             base.speed = 1f;
             base.speedScale = 1f;
