@@ -29,7 +29,7 @@ public class EnemyShoot : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.LookAt(player);
+        //transform.LookAt(player);
         if (Vector2.Distance(transform.position, player.transform.position) <= spawnRadius)
         {
             DestroyAllSpawned();

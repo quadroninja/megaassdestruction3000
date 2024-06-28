@@ -1,53 +1,66 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class HookShot : MonoBehaviour
 {
     private PlayerMovement playerMovement;
     // Параметры способности
     public float cooldownTime = 5f;
-    public float pullRadius = 5f;
-    public float pullForce = 10f;
-    private float buffer = 0;
-    // Время до следующей активации
-    private float nextActivationTime;
+    public float swapRadius = 5f;
+    public float angerSpeed = 1f;
+    public float preparation = 0f; //от 0 до 1
+    private SpriteRenderer sprite;
+    public GameObject hook;
 
-    public void ActivateAbility()
+    GameObject player;
+
+    void Start()
     {
-        GameObject player = GameObject.FindGameObjectWithTag("Player");
-        playerMovement = player.GetComponent<PlayerMovement>();
-        if (Vector2.Distance(transform.position, player.transform.position) <= pullRadius)
+        player = GameObject.FindGameObjectWithTag("Player");
+        sprite = gameObject.GetComponent<SpriteRenderer>();
+        StartCoroutine(AttackCoroutine());
+    }
+
+    bool IsPlayerInRange()
+    {
+        return Vector2.Distance(transform.position, player.transform.position) <= swapRadius;
+    }
+
+    IEnumerator AttackCoroutine()
+    {
+        while (true)
         {
-            buffer = playerMovement.moveSpeed;
-            playerMovement.moveSpeed = 0;
-            ApplyPullForce();
-            playerMovement.moveSpeed = buffer;
+            if (IsPlayerInRange())
+            {
+                preparation += Time.deltaTime * angerSpeed;
+                yield return null;
+            }
+            else
+            {
+                preparation = Math.Max(0, preparation - Time.deltaTime * angerSpeed);
+                yield return null;
+            }
+
+            if (preparation >= 1 && IsPlayerInRange())
+            {
+                ApplyPullForce();
+                preparation = 0;
+                yield return new WaitForSeconds(cooldownTime);
+            }
         }
     }
-    public void DeactivateAbility()
+    void Update()
     {
-        playerMovement.moveSpeed = buffer;
+        //transform.LookAt(player.transform);
+        sprite.color = new Color(1 - preparation, sprite.color.g, sprite.color.b);
     }
+
     private void ApplyPullForce()
     {
-        GameObject player = GameObject.FindGameObjectWithTag("Player");
-        if (Vector2.Distance(transform.position, player.transform.position) <= pullRadius)
-        {
-            Vector2 direction = (transform.position - player.transform.position).normalized;
-            player.GetComponent<Rigidbody2D>().AddForce(direction * pullForce);
-        }
-    }
-
-    // Обновление состояния
-    public void Update()
-    {
-        // Проверка времени для активации способности
-        if (nextActivationTime < 0)
-        {
-            ActivateAbility();
-            nextActivationTime = cooldownTime;
-        }
-        else nextActivationTime -= Time.deltaTime;
+        GameObject spw = Instantiate(hook, transform.position, transform.rotation, transform);
+        Vector2 direction = ((Vector2)player.transform.position - (Vector2)transform.position).normalized;
+        spw.transform.up = direction;
     }
 }

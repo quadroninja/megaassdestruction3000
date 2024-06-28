@@ -48,7 +48,7 @@ MonoBehaviour:
   speed: 0
   lifetime: 10
   atkSpeed: 6
-  damage: 35
+  damage: 60
   baseSpeed: 0
   baseLifetime: 10
   baseAtkSpeed: 6
@@ -65,3 +65,4 @@ MonoBehaviour:
   damageScale: 0.2
   atkSpeedScale: 0.2
   inventory: {fileID: 0}
+  explodable: 0

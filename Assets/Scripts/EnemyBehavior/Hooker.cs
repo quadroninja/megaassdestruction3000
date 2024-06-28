@@ -12,14 +12,4 @@ public class Hooker : Enemy
         // Инициализация способности
         hookShot = GetComponent<HookShot>();
     }
-
-    void Update()
-    {
-        // Вызов метода Update() базового класса Enemy
-        base.Update();
-        // Обновление состояния способности
-        hookShot.Update();
-
-        GameObject player = GameObject.FindGameObjectWithTag("Player");
-    }
 }

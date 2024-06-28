@@ -9,6 +9,8 @@ public class HealthChanger : MonoBehaviour
     public HealthBar healthBar;
     private float timeCheck;
     public float invisibilityTime;
+    public float regenCheck;
+    public float healingTime;
 
     void Start()
     {
@@ -19,13 +21,23 @@ public class HealthChanger : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
+        Regen();
         if (Input.GetKeyDown(KeyCode.Space))
         {
             TakeDamage(20);
         }
         timeCheck -= Time.deltaTime;
     }
-
+    public void Regen()
+    {
+        if (currentHealth + 10 < maxHealth) { regenCheck -= Time.deltaTime; }
+        if (regenCheck <= 0 && currentHealth+10 < maxHealth)
+        {
+            currentHealth += 10;
+            healthBar.ChangeHealth(currentHealth);
+            regenCheck = healingTime;
+        }
+    }
     public void TakeDamage(int damage)
     {
         if (timeCheck <= 0)

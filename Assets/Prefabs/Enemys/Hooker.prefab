@@ -179,5 +179,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cooldownTime: 5
-  pullRadius: 7
-  pullForce: 1100
+  swapRadius: 5
+  angerSpeed: 1
+  preparation: 0
+  hook: {fileID: 3557162656710350807, guid: 1e0404d583f7eed4193d8eb267fe64c8, type: 3}
