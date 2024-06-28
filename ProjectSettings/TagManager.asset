@@ -7,6 +7,7 @@ TagManager:
   - Enemy
   - Destroyable
   - WeaponInventory
+  - xp
   layers:
   - Default
   - TransparentFX

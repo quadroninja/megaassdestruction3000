@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
@@ -10,7 +11,6 @@ public class PlayerMovement : MonoBehaviour
     private float timeCheck;
     private float waitTime;
     private Vector2 moveDirection;
-
     public Animator animator;
     // Update is called once per frame
     void Update()
@@ -25,14 +25,21 @@ public class PlayerMovement : MonoBehaviour
 
     void ProcessInputs()
     {
-        float moveX = Input.GetAxisRaw("Horizontal");
-        float moveY = Input.GetAxisRaw("Vertical");
+        moveDirection.x = Input.GetAxisRaw("Horizontal");
+        moveDirection.y = Input.GetAxisRaw("Vertical");
 
-        moveDirection = new Vector2(moveX, moveY).normalized;
+        if (moveDirection.magnitude > 0f)
+        {
+            moveDirection.Normalize();
+        }
+
+        animator.SetFloat("Horizontal", moveDirection.x);
+        animator.SetFloat("Vertical", moveDirection.y);
+        animator.SetFloat("Speed", moveDirection.sqrMagnitude);
     }
 
     void Move()
     {
-        rb.velocity = new Vector2(moveDirection.x* moveSpeed, moveDirection.y*moveSpeed);
+        rb.MovePosition(rb.position + moveDirection * moveSpeed * Time.fixedDeltaTime);
     }
 }
