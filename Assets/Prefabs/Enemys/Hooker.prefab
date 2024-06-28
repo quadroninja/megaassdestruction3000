@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 3178644656565206471}
   - component: {fileID: -6034658179118369430}
   - component: {fileID: -1272170921326239876}
+  - component: {fileID: 3689630144886103159}
   m_Layer: 3
   m_Name: Hooker
   m_TagString: Enemy
@@ -77,7 +78,7 @@ SpriteRenderer:
   m_SortingLayerID: 1734763459
   m_SortingLayer: 1
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 1462b1c8b75ad0444a8fb644f7c44bec, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 53c16b84d6cb75a4aa7b92c8338629a1, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -165,6 +166,7 @@ MonoBehaviour:
   health: 50
   damage: 75
   movespeed: 0.01
+  xpPrefab: {fileID: 0}
   hookShot: {fileID: -1272170921326239876}
 --- !u!114 &-1272170921326239876
 MonoBehaviour:
@@ -183,3 +185,24 @@ MonoBehaviour:
   angerSpeed: 1
   preparation: 0
   hook: {fileID: 3557162656710350807, guid: 1e0404d583f7eed4193d8eb267fe64c8, type: 3}
+--- !u!95 &3689630144886103159
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6658248698423468219}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 600367346112f414b8b5fe6aedd134b7, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0

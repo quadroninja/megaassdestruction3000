@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 3178644656565206471}
   - component: {fileID: -71927932275546869}
   - component: {fileID: -4501950465647332648}
+  - component: {fileID: 727298467798351146}
   m_Layer: 3
   m_Name: Exploder
   m_TagString: Enemy
@@ -77,8 +78,8 @@ SpriteRenderer:
   m_SortingLayerID: 1734763459
   m_SortingLayer: 1
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 1462b1c8b75ad0444a8fb644f7c44bec, type: 3}
-  m_Color: {r: 0.12941177, g: 0.227451, b: 0.32941177, a: 1}
+  m_Sprite: {fileID: 21300000, guid: 31af5c77babd30f45bd5018ae0520120, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -182,4 +183,26 @@ MonoBehaviour:
   health: 15
   damage: 0
   movespeed: 0.03
+  xpPrefab: {fileID: 0}
   explode: {fileID: -71927932275546869}
+--- !u!95 &727298467798351146
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6658248698423468219}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 7fc20a0752b42ff4cb0f8bed7d22890f, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
