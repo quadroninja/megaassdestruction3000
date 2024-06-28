@@ -164,3 +164,4 @@ MonoBehaviour:
   health: 100
   damage: 20
   movespeed: 0.01
+  xpPrefab: {fileID: 5046651824978775760, guid: 8fea9d9b8985d464fa291d92ef2ba390, type: 3}

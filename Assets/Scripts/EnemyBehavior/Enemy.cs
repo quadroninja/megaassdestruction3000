@@ -8,7 +8,7 @@ public class Enemy : MonoBehaviour
     public int damage;
     private Transform player;
     public float movespeed;
-
+    public GameObject xpPrefab;
 
     private void OnTriggerEnter2D(Collider2D other)
     {
@@ -21,6 +21,7 @@ public class Enemy : MonoBehaviour
     {
         if (health <= 0)
         {
+            Instantiate(xpPrefab, transform.position, Quaternion.identity);
             Destroy(gameObject);
         }
     }
