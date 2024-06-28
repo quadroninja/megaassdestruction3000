@@ -28,6 +28,7 @@ public class BulletUpgrades : WeaponBehaviour
         {
             base.atkSpeed=0.3f;
             base.atkSpeedScale = 0f;
+            GetComponent<AudioSource>().volume = 0.5f;
             inventory.addExtra(gameObject);
         }
     }

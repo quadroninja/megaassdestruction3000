@@ -37,7 +37,7 @@ public class WeaponBehaviour : MonoBehaviour
     }
     public void fire()
     {
-        Debug.Log(transform.up);
+        gameObject.GetComponent<AudioSource>().Play();
         GameObject newBullet = Instantiate(bulletPrefab, transform.position, Quaternion.identity);
         newBullet.GetComponent<BulletBehavior>().Init(speed, lifetime, damage, transform.up);
         cooldown = atkSpeed;
