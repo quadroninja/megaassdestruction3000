@@ -28,6 +28,7 @@ public class Enemy : MonoBehaviour
 
     void Awake()
     {
+        xpPrefab = GameObject.FindGameObjectWithTag("xp");
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
     }
 
