@@ -14,8 +14,9 @@ public class EnemyBulletBehavior : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.gameObject.CompareTag("Player") && timeCheck < 0)
+        if (other.gameObject.CompareTag("Player"))
         {
+            Debug.Log("Damage");
             other.gameObject.GetComponent<HealthChanger>().TakeDamage(damage);
             timeCheck = tickTime;
         }
@@ -23,7 +24,6 @@ public class EnemyBulletBehavior : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        timeCheck -= Time.deltaTime;
         if (lifetime<0)
         {
             Destroy(gameObject);

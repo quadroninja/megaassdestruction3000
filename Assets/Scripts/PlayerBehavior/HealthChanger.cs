@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class HealthChanger : MonoBehaviour
 {
@@ -48,6 +49,7 @@ public class HealthChanger : MonoBehaviour
         }
         if (currentHealth <= 0)
         {
+            SceneManager.LoadScene("Menu");
             Destroy(gameObject);
         }
     }

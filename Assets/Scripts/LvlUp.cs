@@ -10,11 +10,13 @@ public class LvlUp : MonoBehaviour
     public GameObject lvlUpWindow;
     public Button[] options;
     public List<GameObject> weapons;
+    public List<Sprite> weaponIcons;
+    private List<Sprite> weaponUpgradeIcons= new List<Sprite>();
     public WeaponInventory inventory;
     private List<int> usedIndexes = new List<int>();
     private List<int> usedInventoryIndexes = new List<int>();
 
-    public void Equip(GameObject weapon)
+    public void Equip(GameObject weapon, int index)
     {
         Debug.Log("Equip");
         inventory.addWeapon(weapon);
@@ -23,6 +25,8 @@ public class LvlUp : MonoBehaviour
             button.gameObject.SetActive(false);
         }
         weapons.Remove(weapon);
+        weaponUpgradeIcons.Add(weaponIcons[index]);
+        weaponIcons.RemoveAt(index);
     }
     public void Upgrade(int index)
     {
@@ -67,8 +71,9 @@ public class LvlUp : MonoBehaviour
             if (randomIndex != -1)
             {
                 button.GetComponentInChildren<TextMeshProUGUI>().text = weapons[randomIndex].name;//randomIndex.ToString();
+                button.GetComponent<Image>().sprite = weaponIcons[randomIndex];
                 //button.GetComponent<Image>().sprite = weapons[randomIndex].GetComponent<SpriteRenderer>().sprite;
-                button.onClick.AddListener(() => Equip(weapons[randomIndex]));
+                button.onClick.AddListener(() => Equip(weapons[randomIndex], randomIndex));
             }
             else
             {
@@ -76,6 +81,7 @@ public class LvlUp : MonoBehaviour
                 if (randomUpgradeIndex != -1)
                 {
                     button.GetComponentInChildren<TextMeshProUGUI>().text = "Upgrade " + inventory.Weapons[randomUpgradeIndex].name;
+                    button.GetComponent<Image>().sprite = weaponUpgradeIcons[randomUpgradeIndex];
                     button.onClick.AddListener(() => Upgrade(randomUpgradeIndex));
                 }
                 else button.gameObject.SetActive(false);

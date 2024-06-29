@@ -48,11 +48,11 @@ MonoBehaviour:
   bulletPrefab: {fileID: 2428893236397216664, guid: fd33e4e4273f5394cbd8ab25958d278f, type: 3}
   speed: 0
   lifetime: 0.1
-  atkSpeed: 2
+  atkSpeed: 3
   damage: 40
   baseSpeed: 0
   baseLifetime: 0.1
-  baseAtkSpeed: 2
+  baseAtkSpeed: 3
   baseDamage: 40
   cooldown: 0
   level: 1
@@ -64,9 +64,9 @@ MonoBehaviour:
   speedScale: 0
   lifetimeScale: 0
   damageScale: 0.3
-  atkSpeedScale: 0.2
+  atkSpeedScale: 0.15
   inventory: {fileID: 0}
-  scale: 0.2
+  scale: 0.15
 --- !u!82 &-708108337956408444
 AudioSource:
   m_ObjectHideFlags: 0
