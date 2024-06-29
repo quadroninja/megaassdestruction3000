@@ -18,7 +18,6 @@ public class EnemyBulletBehavior : MonoBehaviour
         {
             Debug.Log("Damage");
             other.gameObject.GetComponent<HealthChanger>().TakeDamage(damage);
-            timeCheck = tickTime;
         }
     }
     // Update is called once per frame
