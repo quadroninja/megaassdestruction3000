@@ -146,7 +146,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cooldownTime: 5
   swapRadius: 5
-  angerSpeed: 1
+  angerSpeed: 0.5
   preparation: 0
 --- !u!61 &1618545135504780514
 BoxCollider2D:
