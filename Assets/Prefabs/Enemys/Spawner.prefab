@@ -147,7 +147,7 @@ MonoBehaviour:
   health: 15
   damage: 10
   movespeed: 0.01
-  xpPrefab: {fileID: 0}
+  xpPrefab: {fileID: 3574775725541377269, guid: 8fea9d9b8985d464fa291d92ef2ba390, type: 3}
   explode: {fileID: -71927932275546869}
 --- !u!61 &7977345570496260
 BoxCollider2D:

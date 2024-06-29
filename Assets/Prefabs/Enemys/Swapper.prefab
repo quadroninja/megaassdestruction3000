@@ -130,7 +130,7 @@ MonoBehaviour:
   health: 5
   damage: 5
   movespeed: 0.02
-  xpPrefab: {fileID: 0}
+  xpPrefab: {fileID: 3574775725541377269, guid: 8fea9d9b8985d464fa291d92ef2ba390, type: 3}
   swap: {fileID: 977772608433059404}
 --- !u!114 &977772608433059404
 MonoBehaviour:

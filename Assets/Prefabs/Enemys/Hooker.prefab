@@ -131,7 +131,7 @@ MonoBehaviour:
   health: 50
   damage: 75
   movespeed: 0.01
-  xpPrefab: {fileID: 0}
+  xpPrefab: {fileID: 3574775725541377269, guid: 8fea9d9b8985d464fa291d92ef2ba390, type: 3}
   hookShot: {fileID: -1272170921326239876}
 --- !u!114 &-1272170921326239876
 MonoBehaviour:

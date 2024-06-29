@@ -8,7 +8,7 @@ public class Enemy : MonoBehaviour
     public int damage;
     private Transform player;
     public float movespeed;
-    public GameObject xpPrefab;
+    [SerializeField] GameObject xpPrefab;
 
     private void OnTriggerEnter2D(Collider2D other)
     {
@@ -26,9 +26,9 @@ public class Enemy : MonoBehaviour
         }
     }
 
-    void Awake()
+    void Start()
     {
-        xpPrefab = GameObject.FindGameObjectWithTag("xp");
+        //xpPrefab = GameObject.FindGameObjectWithTag("xp");
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
     }
 
