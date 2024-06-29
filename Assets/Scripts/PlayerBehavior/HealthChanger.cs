@@ -23,10 +23,6 @@ public class HealthChanger : MonoBehaviour
     void FixedUpdate()
     {
         Regen();
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            TakeDamage(20);
-        }
         timeCheck -= Time.deltaTime;
     }
     public void Regen()
