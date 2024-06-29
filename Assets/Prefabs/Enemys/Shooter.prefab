@@ -164,7 +164,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 100
   damage: 0
-  movespeed: 0
+  movespeed: 0.02
   xpPrefab: {fileID: 3574775725541377269, guid: 8fea9d9b8985d464fa291d92ef2ba390, type: 3}
 --- !u!114 &4104151609099039448
 MonoBehaviour:

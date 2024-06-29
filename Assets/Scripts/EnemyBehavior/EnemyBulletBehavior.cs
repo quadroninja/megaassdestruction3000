@@ -11,7 +11,7 @@ public class EnemyBulletBehavior : MonoBehaviour
     public float tickTime;
     private float timeCheck;
     public LayerMask whatIsSolid;
-
+    
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.gameObject.CompareTag("Player"))

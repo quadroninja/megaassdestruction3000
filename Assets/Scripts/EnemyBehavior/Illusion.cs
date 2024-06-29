@@ -8,6 +8,7 @@ public class Illusion : Enemy
     private float timer;
     void Start()
     {
+        base.Start();
         timer = lifetime;
     }
     void FixedUpdate()

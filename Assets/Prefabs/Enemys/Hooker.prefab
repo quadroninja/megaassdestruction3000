@@ -128,7 +128,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ca4aca91153f33b4c8f87ffc7ffeefbe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 200
+  health: 150
   damage: 25
   movespeed: 0.01
   xpPrefab: {fileID: 3574775725541377269, guid: 8fea9d9b8985d464fa291d92ef2ba390, type: 3}
@@ -145,7 +145,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 701f4b34bcdc01a478c25c436f79be7d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cooldownTime: 5
+  cooldownTime: 8
   swapRadius: 5
   angerSpeed: 1
   preparation: 0

@@ -128,7 +128,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 1000
   damage: 10
-  movespeed: 0.015
+  movespeed: 0.02
   xpPrefab: {fileID: 3574775725541377269, guid: 8fea9d9b8985d464fa291d92ef2ba390, type: 3}
   lifetime: 5
 --- !u!61 &5705521355415158803
