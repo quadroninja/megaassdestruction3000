@@ -10,7 +10,7 @@ public class Hook : MonoBehaviour
     public float pullForce;
     public float tickTime;
     private float timeCheck;
-    private GameObject player;
+    private GameObject player= null;
     public LayerMask whatIsSolid;
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -36,7 +36,7 @@ public class Hook : MonoBehaviour
     }
     void OnDestroy()
     {
-        if (player.transform.IsChildOf(this.transform))
+        if (player != null && player.transform.IsChildOf(this.transform))
         {
             player.GetComponent<PlayerMovement>().getUnhooked();
             foreach (Behaviour comp in player.GetComponents<Behaviour>())

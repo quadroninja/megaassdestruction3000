@@ -9,7 +9,13 @@ public class Swapper : Enemy
 
     void Start()
     {
+        base.Start();
         // Инициализация способности
         swap = GetComponent<Swap>();
+    }
+    void FixedUpdate()
+    {
+        base.Update();
+        base.FixedUpdate();
     }
 }

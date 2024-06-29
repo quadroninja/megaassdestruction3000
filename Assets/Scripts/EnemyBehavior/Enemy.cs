@@ -26,16 +26,14 @@ public class Enemy : MonoBehaviour
         }
     }
 
-    void Start()
+    public void FixedUpdate()
+    {
+        transform.position = Vector2.MoveTowards(transform.position, player.position, movespeed);
+    }
+    public void Start()
     {
         //xpPrefab = GameObject.FindGameObjectWithTag("xp");
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
-    }
-
-
-    void FixedUpdate()
-    {
-        transform.position = Vector2.MoveTowards(transform.position, player.position, movespeed);
     }
 
     public void TakeDamage(int damage)

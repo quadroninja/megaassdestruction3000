@@ -10,9 +10,10 @@ public class Illusion : Enemy
     {
         timer = lifetime;
     }
-    void Update()
+    void FixedUpdate()
     {
         base.Update();
+        base.FixedUpdate();
         timer -= Time.deltaTime;
         if (timer < 0)
         {

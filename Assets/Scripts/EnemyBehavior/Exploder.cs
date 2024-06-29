@@ -9,14 +9,16 @@ public class Exploder : Enemy
 
     void Start()
     {
+        base.Start();
         // Инициализация способности
         explode = GetComponent<Explode>();
     }
 
-    void Update()
+    void FixedUpdate()
     {
         // Вызов метода Update() базового класса Enemy
         base.Update();
+        base.FixedUpdate();
         // Обновление состояния способности
         explode.Update();
         if (base.health < 0)

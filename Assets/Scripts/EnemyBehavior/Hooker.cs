@@ -9,7 +9,13 @@ public class Hooker : Enemy
 
     void Start()
     {
+        base.Start();
         // Инициализация способности
         hookShot = GetComponent<HookShot>();
+    }
+    void FixedUpdate()
+    {
+        base.Update();
+        base.FixedUpdate();
     }
 }

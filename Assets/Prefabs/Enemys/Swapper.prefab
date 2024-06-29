@@ -127,7 +127,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8c0b9e70012af8f44980c85176f1a632, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 5
+  health: 300
   damage: 5
   movespeed: 0.02
   xpPrefab: {fileID: 3574775725541377269, guid: 8fea9d9b8985d464fa291d92ef2ba390, type: 3}
@@ -146,7 +146,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cooldownTime: 5
   swapRadius: 5
-  angerSpeed: 0.5
+  angerSpeed: 1
   preparation: 0
 --- !u!61 &1618545135504780514
 BoxCollider2D:
