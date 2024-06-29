@@ -14,9 +14,9 @@ public class PlayerMovement : MonoBehaviour
     private Vector2 moveDirection;
     private bool isHooked;
     public bool IsHooked { get { return isHooked; } }
-    public float hookStrengthMultiplier = 20f;
+    public float hookStrengthMultiplier = 0f;
     public float hookStrengthThreshold = 100f;
-    public float hookStrengthDecreaseOnTap = 10f;
+    public float hookStrengthDecreaseOnTap = 20f;
     private float hookStrengthCurrent = 0f;
 
     public Animator animator;
