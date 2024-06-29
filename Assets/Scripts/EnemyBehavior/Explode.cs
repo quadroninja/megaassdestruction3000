@@ -39,4 +39,8 @@ public class Explode : MonoBehaviour
     {
         ActivateExplodeAbility();
     }
+    public void OnDestroy()
+    {
+        Death();
+    }
 }

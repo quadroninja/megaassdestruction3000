@@ -102,7 +102,7 @@ public class EnemySpawner : MonoBehaviour
         {
             Destroy(exp);
         }
-        if (currentWave > 8)
+        if (currentWave > 7)
         {
             win.SetActive(true);
             // Конец игры
